@@ -6,24 +6,26 @@ interface Props {
 const { appUrl } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/80 backdrop-blur">
+<header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(248,243,235,0.78)] backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
     <div class="flex items-center gap-2">
-      <div class="h-8 w-8 rounded-xl bg-neutral-900"></div>
-      <span class="text-sm font-semibold tracking-tight">Nexuit</span>
+      <div class="grid h-9 w-9 place-items-center rounded-2xl bg-[color:var(--brand)] shadow-[0_12px_26px_rgba(23,76,69,0.22)]">
+        <span class="text-xs font-semibold tracking-[0.22em] text-white">N</span>
+      </div>
+      <span class="text-sm font-semibold tracking-[0.14em] text-[color:var(--ink)] uppercase">Nexuit</span>
     </div>
 
-    <nav class="hidden items-center gap-6 text-sm text-neutral-600 md:flex">
-      <a class="hover:text-neutral-900" href="#producto">Producto</a>
-      <a class="hover:text-neutral-900" href="#modulos">Módulos</a>
-      <a class="hover:text-neutral-900" href="#para-quien">Para quién</a>
-      <a class="hover:text-neutral-900" href="#faq">FAQ</a>
+    <nav class="hidden items-center gap-6 text-sm text-[color:var(--muted)] md:flex">
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#producto">Producto</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#modulos">Módulos</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#para-quien">Para quién</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#faq">FAQ</a>
     </nav>
 
     <div class="flex items-center gap-2">
       <a
         href={appUrl}
-        class="rounded-xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+        class="rounded-full bg-[color:var(--brand)] px-4 py-2 text-sm font-medium text-white shadow-[0_12px_24px_rgba(23,76,69,0.2)] transition-colors hover:bg-[color:var(--brand-strong)]"
         rel="noopener noreferrer"
       >
         Acceder

@@ -15,20 +15,21 @@ const { appUrl, primaryCtaClass, secondaryCtaClass, faqs } = Astro.props;
 ---
 
 <section id="faq" class="mx-auto max-w-6xl px-4 py-14">
-  <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
+  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Objeciones comunes</div>
+  <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">FAQ</h2>
 
   <div class="mt-8 grid gap-4 md:grid-cols-2">
     {faqs.map((faq) => (
-      <details class="rounded-2xl border border-neutral-200 p-6">
-        <summary class="cursor-pointer text-sm font-semibold">{faq.q}</summary>
-        <p class="mt-2 text-sm text-neutral-600">{faq.a}</p>
+      <details class="glass-card rounded-[1.75rem] p-6">
+        <summary class="cursor-pointer text-sm font-semibold text-[color:var(--ink)]">{faq.q}</summary>
+        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">{faq.a}</p>
       </details>
     ))}
   </div>
 
-  <div class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-8">
-    <h3 class="text-lg font-semibold">¿Listo para ordenar tu operación base?</h3>
-    <p class="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
+  <div class="mt-10 rounded-[2rem] border border-[color:var(--line)] bg-[rgba(255,250,243,0.88)] p-8 shadow-[0_18px_40px_rgba(42,31,12,0.08)]">
+    <h3 class="text-2xl font-semibold tracking-tight text-[color:var(--ink)]">¿Listo para ordenar tu operación base?</h3>
+    <p class="mt-3 max-w-2xl text-sm leading-7 text-[color:var(--muted)]">
       Entra a Nexuit y arranca con Inventario + Productos. Si hoy operas con hojas sueltas o
       sistemas desconectados, este es el punto donde empiezas a trabajar con una sola fuente de
       verdad.
