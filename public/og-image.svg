@@ -1,0 +1,29 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#0A0A0A"/>
+  <rect x="48" y="48" width="1104" height="534" rx="32" fill="url(#paint0_linear_1_2)"/>
+  <rect x="72" y="72" width="1056" height="486" rx="28" fill="#111111" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <rect x="112" y="116" width="158" height="46" rx="23" fill="#171717" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <text x="138" y="145" fill="#F5F5F5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEXUIT CORE</text>
+  <text x="112" y="242" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">
+    <tspan x="112" dy="0">Inventario y catálogo</tspan>
+    <tspan x="112" dy="76">sin caos operativo</tspan>
+  </text>
+  <text x="112" y="378" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
+    <tspan x="112" dy="0">Variantes, almacenes y movimientos auditables</tspan>
+    <tspan x="112" dy="40">sobre una base modular lista para escalar.</tspan>
+  </text>
+  <rect x="112" y="454" width="262" height="64" rx="18" fill="#FAFAFA"/>
+  <text x="151" y="494" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">nexuit.app</text>
+  <rect x="738" y="140" width="320" height="320" rx="28" fill="#141414" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <rect x="774" y="182" width="248" height="56" rx="16" fill="#1F1F1F"/>
+  <rect x="774" y="262" width="114" height="122" rx="20" fill="#FAFAFA"/>
+  <rect x="908" y="262" width="114" height="56" rx="20" fill="#262626"/>
+  <rect x="908" y="328" width="114" height="56" rx="20" fill="#262626"/>
+  <rect x="774" y="404" width="248" height="24" rx="12" fill="#262626"/>
+  <defs>
+    <linearGradient id="paint0_linear_1_2" x1="90" y1="80" x2="1112" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#171717"/>
+      <stop offset="1" stop-color="#0F172A"/>
+    </linearGradient>
+  </defs>
+</svg>

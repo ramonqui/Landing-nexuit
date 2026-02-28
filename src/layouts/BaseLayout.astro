@@ -17,7 +17,7 @@ const {
 
 const SITE_URL = 'https://nexuit.app';
 const canonicalUrl = new URL(path, SITE_URL).toString();
-const socialImageUrl = new URL('/favicon.svg', SITE_URL).toString();
+const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
 ---
 
 <html lang="es">
@@ -38,6 +38,7 @@ const socialImageUrl = new URL('/favicon.svg', SITE_URL).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
+    <meta property="og:image:alt" content="Vista previa de la landing de Nexuit" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
