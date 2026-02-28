@@ -1,7 +1,53 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-const APP_URL = "https://app.nexuit.app";
+const APP_URL = 'https://app.nexuit.app';
+const primaryCtaClass =
+  'inline-flex items-center justify-center rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800';
+const secondaryCtaClass =
+  'inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-medium text-neutral-900 hover:bg-neutral-50';
+
+const upcomingModules = [
+  { title: 'Punto de venta (POS)', desc: 'Venta y operación en mostrador sobre el mismo inventario.' },
+  { title: 'Fabricación', desc: 'Planeación y control de producción basado en variantes.' },
+  { title: 'Tienda online', desc: 'Publica tu catálogo en tu propia tienda.' },
+  { title: 'Marketplace', desc: 'Habilita el canal marketplace sin duplicar catálogo.' },
+  { title: 'Integraciones', desc: 'Conecta envíos, marketplaces y herramientas externas.' },
+];
+
+const implementationPoints = [
+  {
+    title: 'Arranque rápido',
+    desc: 'Empieza con catálogo, variantes y almacenes sin pasar semanas configurando un ERP completo.',
+  },
+  {
+    title: 'Operación ordenada',
+    desc: 'Cada movimiento deja rastro para que ventas, stock y expansión trabajen sobre el mismo dato.',
+  },
+  {
+    title: 'Escalado sin rehacer',
+    desc: 'Cuando actives POS, fabricación o ecommerce, la base ya está construida sobre el mismo núcleo.',
+  },
+];
+
+const faqs = [
+  {
+    q: '¿Puedo usar solo inventario sin ecommerce?',
+    a: 'Sí. Nexuit es modular. Puedes usar Inventario + Productos sin activar tienda o marketplace.',
+  },
+  {
+    q: '¿Puedo manejar varios negocios?',
+    a: 'Sí. Multi-tenant: un usuario puede operar varios negocios y cada uno mantiene sus datos separados.',
+  },
+  {
+    q: '¿Qué diferencia a Nexuit de un POS típico?',
+    a: 'Nexuit es el núcleo (catálogo + inventario + movimientos). POS es un módulo encima, no el centro.',
+  },
+  {
+    q: '¿Cuándo salen POS / fabricación / ecommerce?',
+    a: 'Por fases. Primero estabilidad del núcleo: inventario y catálogo bien hechos.',
+  },
+];
 ---
 
 <BaseLayout
@@ -28,6 +74,7 @@ const APP_URL = "https://app.nexuit.app";
           <a
             href={APP_URL}
             class="rounded-xl bg-neutral-900 px-4 py-2 text-sm font-medium text-white hover:bg-neutral-800"
+            rel="noopener noreferrer"
           >
             Acceder
           </a>
@@ -57,14 +104,15 @@ const APP_URL = "https://app.nexuit.app";
           <div class="mt-6 flex flex-col gap-3 sm:flex-row">
             <a
               href={APP_URL}
-              class="inline-flex items-center justify-center rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+              class={primaryCtaClass}
+              rel="noopener noreferrer"
             >
               Acceder a Nexuit
             </a>
 
             <a
               href="#como-funciona"
-              class="inline-flex items-center justify-center rounded-xl border border-neutral-200 bg-white px-5 py-3 text-sm font-medium text-neutral-900 hover:bg-neutral-50"
+              class={secondaryCtaClass}
             >
               Ver cómo funciona
             </a>
@@ -204,10 +252,36 @@ const APP_URL = "https://app.nexuit.app";
         <div class="mt-8">
           <a
             href={APP_URL}
-            class="inline-flex items-center justify-center rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+            class={primaryCtaClass}
+            rel="noopener noreferrer"
           >
             Acceder a Nexuit
           </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Implementación -->
+    <section class="mx-auto max-w-6xl px-4 py-14">
+      <div class="rounded-3xl border border-neutral-200 bg-neutral-950 px-6 py-8 text-white md:px-8 md:py-10">
+        <div class="max-w-2xl">
+          <div class="text-xs font-medium uppercase tracking-[0.22em] text-neutral-400">Implementación</div>
+          <h2 class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+            Lo que resuelves desde el primer día
+          </h2>
+          <p class="mt-3 text-sm leading-7 text-neutral-300 md:text-base">
+            Nexuit no intenta reemplazar toda tu operación de golpe. Primero fija el núcleo que más
+            duele: inventario y catálogo. Después escalas sobre una base que ya está limpia.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          {implementationPoints.map((point) => (
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <h3 class="text-sm font-semibold text-white">{point.title}</h3>
+              <p class="mt-2 text-sm leading-6 text-neutral-300">{point.desc}</p>
+            </div>
+          ))}
         </div>
       </div>
     </section>
@@ -226,13 +300,7 @@ const APP_URL = "https://app.nexuit.app";
           <p class="mt-2 text-sm text-neutral-600">Catálogo con variantes, almacenes y movimientos.</p>
         </div>
 
-        {[
-          { title: "Punto de venta (POS)", desc: "Venta y operación en mostrador sobre el mismo inventario." },
-          { title: "Fabricación", desc: "Planeación y control de producción basado en variantes." },
-          { title: "Tienda online", desc: "Publica tu catálogo en tu propia tienda." },
-          { title: "Marketplace", desc: "Habilita el canal marketplace sin duplicar catálogo." },
-          { title: "Integraciones", desc: "Conecta envíos, marketplaces y herramientas externas." },
-        ].map((m) => (
+        {upcomingModules.map((m) => (
           <div class="rounded-2xl border border-neutral-200 p-6">
             <div class="inline-flex rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">Próximamente</div>
             <div class="mt-3 text-sm font-semibold">{m.title}</div>
@@ -287,24 +355,7 @@ const APP_URL = "https://app.nexuit.app";
       <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">FAQ</h2>
 
       <div class="mt-8 grid gap-4 md:grid-cols-2">
-        {[
-          {
-            q: "¿Puedo usar solo inventario sin ecommerce?",
-            a: "Sí. Nexuit es modular. Puedes usar Inventario + Productos sin activar tienda o marketplace.",
-          },
-          {
-            q: "¿Puedo manejar varios negocios?",
-            a: "Sí. Multi-tenant: un usuario puede operar varios negocios y cada uno mantiene sus datos separados.",
-          },
-          {
-            q: "¿Qué diferencia a Nexuit de un POS típico?",
-            a: "Nexuit es el núcleo (catálogo + inventario + movimientos). POS es un módulo encima, no el centro.",
-          },
-          {
-            q: "¿Cuándo salen POS / fabricación / ecommerce?",
-            a: "Por fases. Primero estabilidad del núcleo: inventario y catálogo bien hechos.",
-          },
-        ].map((f) => (
+        {faqs.map((f) => (
           <details class="rounded-2xl border border-neutral-200 p-6">
             <summary class="cursor-pointer text-sm font-semibold">{f.q}</summary>
             <p class="mt-2 text-sm text-neutral-600">{f.a}</p>
@@ -313,16 +364,22 @@ const APP_URL = "https://app.nexuit.app";
       </div>
 
       <div class="mt-10 rounded-2xl border border-neutral-200 bg-neutral-50 p-8">
-        <h3 class="text-lg font-semibold">¿Listo para entrar?</h3>
-        <p class="mt-2 text-sm text-neutral-600">
-          Accede a la plataforma y empieza con Inventario + Productos.
+        <h3 class="text-lg font-semibold">¿Listo para ordenar tu operación base?</h3>
+        <p class="mt-2 max-w-2xl text-sm leading-6 text-neutral-600">
+          Entra a Nexuit y arranca con Inventario + Productos. Si hoy operas con hojas sueltas o
+          sistemas desconectados, este es el punto donde empiezas a trabajar con una sola fuente de
+          verdad.
         </p>
-        <div class="mt-5">
+        <div class="mt-5 flex flex-col gap-3 sm:flex-row">
           <a
             href={APP_URL}
-            class="inline-flex items-center justify-center rounded-xl bg-neutral-900 px-5 py-3 text-sm font-medium text-white hover:bg-neutral-800"
+            class={primaryCtaClass}
+            rel="noopener noreferrer"
           >
             Acceder a Nexuit
+          </a>
+          <a href="#producto" class={secondaryCtaClass}>
+            Ver el problema que resuelve
           </a>
         </div>
       </div>
