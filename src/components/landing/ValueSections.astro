@@ -1,4 +1,6 @@
 ---
+import IconGlyph from './IconGlyph.astro';
+
 interface Item {
   title: string;
   desc: string;
@@ -49,22 +51,30 @@ const { appUrl, primaryCtaClass, implementationPoints, upcomingModules } = Astro
 
   <div class="mt-8 grid gap-4 md:grid-cols-2">
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="mb-4 text-xl text-[color:var(--brand)]">◧</div>
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="catalog" />
+      </div>
       <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Catálogo con variantes reales</h3>
       <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Tallas, colores, SKUs, costos, precios y peso por variante.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="mb-4 text-xl text-[color:var(--brand)]">⌖</div>
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="warehouse" />
+      </div>
       <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Inventario por almacén/ubicación</h3>
       <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Control por sucursal, bodega o ubicación.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="mb-4 text-xl text-[color:var(--brand)]">↗</div>
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="movement" />
+      </div>
       <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Movimientos auditables</h3>
       <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Entradas, salidas, ajustes y transferencias con historial claro.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="mb-4 text-xl text-[color:var(--brand)]">▣</div>
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="tenant" />
+      </div>
       <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Multi-negocio (multi-tenant)</h3>
       <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Un usuario, varios negocios. Todo separado y ordenado.</p>
     </div>
@@ -80,19 +90,25 @@ const { appUrl, primaryCtaClass, implementationPoints, upcomingModules } = Astro
 
     <div class="mt-8 grid gap-4 md:grid-cols-3">
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-        <div class="mb-4 text-xl text-[color:var(--brand)]">◌</div>
+        <div class="mb-4 text-[color:var(--brand)]">
+          <IconGlyph name="setup" />
+        </div>
         <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 1</div>
         <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Crea tu catálogo</div>
         <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Productos + variantes con SKUs.</p>
       </div>
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-        <div class="mb-4 text-xl text-[color:var(--brand)]">▤</div>
+        <div class="mb-4 text-[color:var(--brand)]">
+          <IconGlyph name="layers" />
+        </div>
         <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 2</div>
         <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Define almacenes</div>
         <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Ubicaciones, sucursales o bodegas.</p>
       </div>
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-        <div class="mb-4 text-xl text-[color:var(--brand)]">✓</div>
+        <div class="mb-4 text-[color:var(--brand)]">
+          <IconGlyph name="check" />
+        </div>
         <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 3</div>
         <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Controla stock real</div>
         <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Movimientos con historial auditable.</p>
@@ -143,7 +159,9 @@ const { appUrl, primaryCtaClass, implementationPoints, upcomingModules } = Astro
   <div class="mt-8 grid gap-4 md:grid-cols-3">
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
       <div class="mb-4 flex items-start justify-between">
-        <div class="text-xl text-[color:var(--brand)]">⎘</div>
+        <div class="text-[color:var(--brand)]">
+          <IconGlyph name="available" />
+        </div>
         <div class="inline-flex rounded-full bg-[rgba(37,99,235,0.1)] px-3 py-1 text-xs font-medium text-[color:var(--brand)]">
           Disponible
         </div>
@@ -155,7 +173,9 @@ const { appUrl, primaryCtaClass, implementationPoints, upcomingModules } = Astro
     {upcomingModules.map((module) => (
       <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
         <div class="mb-4 flex items-start justify-between">
-          <div class="text-xl text-[color:var(--brand)]">↗</div>
+          <div class="text-[color:var(--brand)]">
+            <IconGlyph name="launch" />
+          </div>
           <div class="inline-flex rounded-full bg-[rgba(6,182,212,0.1)] px-3 py-1 text-xs font-medium text-[color:var(--accent)]">
             Próximamente
           </div>

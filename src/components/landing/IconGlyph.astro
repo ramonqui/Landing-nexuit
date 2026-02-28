@@ -1,0 +1,87 @@
+---
+interface Props {
+  name:
+    | 'catalog'
+    | 'warehouse'
+    | 'movement'
+    | 'tenant'
+    | 'setup'
+    | 'layers'
+    | 'check'
+    | 'available'
+    | 'launch';
+  class?: string;
+}
+
+const { name, class: className = 'h-5 w-5' } = Astro.props;
+
+const paths = {
+  catalog: [
+    'M4.75 5.75h10.5v12.5H4.75z',
+    'M8 8.5h4',
+    'M8 11.5h4',
+    'M8 14.5h2.5',
+  ],
+  warehouse: [
+    'M4.5 10.5 10 6l5.5 4.5',
+    'M6 9.5v7h8v-7',
+    'M9 16.5v-4h2v4',
+  ],
+  movement: [
+    'M5 8.5h8',
+    'M10 5.5l3 3-3 3',
+    'M15 15.5H7',
+    'M10 12.5l-3 3 3 3',
+  ],
+  tenant: [
+    'M6.5 9.25a2.25 2.25 0 1 0 0-4.5 2.25 2.25 0 0 0 0 4.5Z',
+    'M13.5 10a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z',
+    'M4.75 16c.5-2 2.05-3 4-3s3.5 1 4 3',
+    'M12 15.5c.35-1.35 1.45-2.1 2.9-2.1 1.05 0 1.9.3 2.35.8',
+  ],
+  setup: [
+    'M6 14.75V9.25',
+    'M10 14.75V7.25',
+    'M14 14.75v-3.5',
+    'M4.75 16.5h10.5',
+  ],
+  layers: [
+    'M10 5.5 4.75 8.5 10 11.5l5.25-3L10 5.5Z',
+    'M6.5 11l3.5 2 3.5-2',
+    'M6.5 14l3.5 2 3.5-2',
+  ],
+  check: [
+    'M10 4.75a5.25 5.25 0 1 1 0 10.5 5.25 5.25 0 0 1 0-10.5Z',
+    'm7.75 15.25 1.5 1.5',
+    'm8 10.25 1.5 1.5 3-3',
+  ],
+  available: [
+    'M5.5 7.25h9',
+    'M5.5 10.25h9',
+    'M5.5 13.25h6',
+    'M4.75 5.75h10.5v9.5H4.75z',
+  ],
+  launch: [
+    'M7 13 13 7',
+    'M8 7h5v5',
+    'M6 9.5H5v5h5v-1',
+  ],
+} as const;
+
+const iconPaths = paths[name];
+---
+
+<svg
+  viewBox="0 0 20 20"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="1.6"
+  aria-hidden="true"
+  class={className}
+>
+  {iconPaths.map((d) => (
+    <path d={d} />
+  ))}
+</svg>
