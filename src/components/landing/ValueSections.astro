@@ -1,0 +1,181 @@
+---
+interface Item {
+  title: string;
+  desc: string;
+}
+
+interface Props {
+  appUrl: string;
+  primaryCtaClass: string;
+  implementationPoints: Item[];
+  upcomingModules: Item[];
+}
+
+const { appUrl, primaryCtaClass, implementationPoints, upcomingModules } = Astro.props;
+---
+
+<section id="producto" class="border-y border-neutral-200/60 bg-neutral-50">
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <div class="grid gap-10 md:grid-cols-2">
+      <div>
+        <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+          Si tu inventario no está bien, todo se rompe
+        </h2>
+        <p class="mt-3 text-neutral-600">
+          Excel sirve… hasta que creces. Variantes, almacenes, ventas y producción empiezan a desalinearse
+          y pierdes dinero sin darte cuenta.
+        </p>
+      </div>
+      <ul class="space-y-3 text-sm text-neutral-700">
+        <li class="rounded-xl border border-neutral-200 bg-white px-4 py-3">“Tengo stock pero no lo encuentro”</li>
+        <li class="rounded-xl border border-neutral-200 bg-white px-4 py-3">“Me faltan tallas/colores y no sé por qué”</li>
+        <li class="rounded-xl border border-neutral-200 bg-white px-4 py-3">“Mi inventario no cuadra con lo que vendí”</li>
+        <li class="rounded-xl border border-neutral-200 bg-white px-4 py-3">“Cada canal maneja su propio catálogo”</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-14">
+  <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">
+    Nexuit lo ordena como sistema
+  </h2>
+  <p class="mt-3 max-w-2xl text-neutral-600">
+    Estructura simple, escalable y auditada: <span class="font-medium text-neutral-900">Producto → Variantes → Ubicaciones → Movimientos</span>.
+  </p>
+
+  <div class="mt-8 grid gap-4 md:grid-cols-2">
+    <div class="rounded-2xl border border-neutral-200 p-6">
+      <h3 class="text-sm font-semibold">Catálogo con variantes reales</h3>
+      <p class="mt-2 text-sm text-neutral-600">Tallas, colores, SKUs, costos, precios y peso por variante.</p>
+    </div>
+    <div class="rounded-2xl border border-neutral-200 p-6">
+      <h3 class="text-sm font-semibold">Inventario por almacén/ubicación</h3>
+      <p class="mt-2 text-sm text-neutral-600">Control por sucursal, bodega o ubicación.</p>
+    </div>
+    <div class="rounded-2xl border border-neutral-200 p-6">
+      <h3 class="text-sm font-semibold">Movimientos auditables</h3>
+      <p class="mt-2 text-sm text-neutral-600">Entradas, salidas, ajustes y transferencias con historial claro.</p>
+    </div>
+    <div class="rounded-2xl border border-neutral-200 p-6">
+      <h3 class="text-sm font-semibold">Multi-negocio (multi-tenant)</h3>
+      <p class="mt-2 text-sm text-neutral-600">Un usuario, varios negocios. Todo separado y ordenado.</p>
+    </div>
+  </div>
+</section>
+
+<section id="como-funciona" class="border-y border-neutral-200/60 bg-neutral-50">
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Empieza en horas, no en semanas</h2>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-xs text-neutral-500">Paso 1</div>
+        <div class="mt-1 text-sm font-semibold">Crea tu catálogo</div>
+        <p class="mt-2 text-sm text-neutral-600">Productos + variantes con SKUs.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-xs text-neutral-500">Paso 2</div>
+        <div class="mt-1 text-sm font-semibold">Define almacenes</div>
+        <p class="mt-2 text-sm text-neutral-600">Ubicaciones, sucursales o bodegas.</p>
+      </div>
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-xs text-neutral-500">Paso 3</div>
+        <div class="mt-1 text-sm font-semibold">Controla stock real</div>
+        <p class="mt-2 text-sm text-neutral-600">Movimientos con historial auditable.</p>
+      </div>
+    </div>
+
+    <div class="mt-8">
+      <a href={appUrl} class={primaryCtaClass} rel="noopener noreferrer">
+        Acceder a Nexuit
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-14">
+  <div class="rounded-3xl border border-neutral-200 bg-neutral-950 px-6 py-8 text-white md:px-8 md:py-10">
+    <div class="max-w-2xl">
+      <div class="text-xs font-medium uppercase tracking-[0.22em] text-neutral-400">Implementación</div>
+      <h2 class="mt-3 text-2xl font-semibold tracking-tight md:text-3xl">
+        Lo que resuelves desde el primer día
+      </h2>
+      <p class="mt-3 text-sm leading-7 text-neutral-300 md:text-base">
+        Nexuit no intenta reemplazar toda tu operación de golpe. Primero fija el núcleo que más
+        duele: inventario y catálogo. Después escalas sobre una base que ya está limpia.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      {implementationPoints.map((point) => (
+        <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+          <h3 class="text-sm font-semibold text-white">{point.title}</h3>
+          <p class="mt-2 text-sm leading-6 text-neutral-300">{point.desc}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<section id="modulos" class="mx-auto max-w-6xl px-4 py-14">
+  <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Modular por diseño</h2>
+  <p class="mt-3 max-w-2xl text-neutral-600">
+    Activa solo lo que necesitas hoy. El resto se construye encima del mismo núcleo.
+  </p>
+
+  <div class="mt-8 grid gap-4 md:grid-cols-3">
+    <div class="rounded-2xl border border-neutral-200 p-6">
+      <div class="inline-flex rounded-full bg-neutral-900 px-3 py-1 text-xs font-medium text-white">Disponible</div>
+      <div class="mt-3 text-sm font-semibold">Inventario + Productos</div>
+      <p class="mt-2 text-sm text-neutral-600">Catálogo con variantes, almacenes y movimientos.</p>
+    </div>
+
+    {upcomingModules.map((module) => (
+      <div class="rounded-2xl border border-neutral-200 p-6">
+        <div class="inline-flex rounded-full bg-neutral-100 px-3 py-1 text-xs font-medium text-neutral-700">Próximamente</div>
+        <div class="mt-3 text-sm font-semibold">{module.title}</div>
+        <p class="mt-2 text-sm text-neutral-600">{module.desc}</p>
+      </div>
+    ))}
+  </div>
+
+  <p class="mt-6 text-sm text-neutral-500">
+    Nota: primero clavamos inventario y catálogo. Eso evita rehacer todo después.
+  </p>
+</section>
+
+<section id="para-quien" class="border-y border-neutral-200/60 bg-neutral-50">
+  <div class="mx-auto max-w-6xl px-4 py-14">
+    <h2 class="text-2xl font-semibold tracking-tight md:text-3xl">Hecho para operar de verdad</h2>
+
+    <div class="mt-8 grid gap-4 md:grid-cols-3">
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-sm font-semibold">Fabricantes</div>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-600">
+          <li>Variantes ordenadas</li>
+          <li>Control por almacén</li>
+          <li>Base sólida para producción</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-sm font-semibold">Tiendas con inventario real</div>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-600">
+          <li>Entradas, salidas y ajustes</li>
+          <li>Transferencias entre ubicaciones</li>
+          <li>Historial auditable</li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl border border-neutral-200 bg-white p-6">
+        <div class="text-sm font-semibold">Vendedores multi-canal</div>
+        <ul class="mt-3 space-y-2 text-sm text-neutral-600">
+          <li>Catálogo consistente</li>
+          <li>Listo para tienda propia</li>
+          <li>Listo para marketplace</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
