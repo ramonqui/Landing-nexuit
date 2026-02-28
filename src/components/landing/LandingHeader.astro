@@ -1,4 +1,6 @@
 ---
+import BrandMark from './BrandMark.astro';
+
 interface Props {
   appUrl: string;
 }
@@ -8,11 +10,12 @@ const { appUrl } = Astro.props;
 
 <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(244,248,255,0.72)] backdrop-blur-xl">
   <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-    <div class="flex items-center gap-2">
-      <div class="grid h-10 w-10 place-items-center rounded-2xl bg-[linear-gradient(135deg,var(--brand),var(--accent))] shadow-[0_14px_30px_rgba(37,99,235,0.24)]">
-        <span class="text-xs font-bold tracking-[0.18em] text-white">N</span>
+    <div class="flex items-center gap-3">
+      <BrandMark />
+      <div class="flex flex-col leading-none">
+        <span class="text-sm font-semibold tracking-[0.08em] text-[color:var(--ink)] uppercase">Nexuit</span>
+        <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">Core Platform</span>
       </div>
-      <span class="text-sm font-semibold tracking-[0.08em] text-[color:var(--ink)] uppercase">Nexuit</span>
     </div>
 
     <nav class="hidden items-center gap-6 text-sm text-[color:var(--muted)] md:flex">
