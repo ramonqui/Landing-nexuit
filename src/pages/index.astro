@@ -1,21 +1,14 @@
 ---
-import '../styles/global.css';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const APP_URL = "https://app.nexuit.app";
 ---
 
-<html lang="es">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nexuit — Inventario y productos, modular y escalable</title>
-    <meta
-      name="description"
-      content="Nexuit es el núcleo modular para controlar inventario y catálogo: variantes, almacenes y movimientos auditables. Listo para escalar a POS, fabricación, tienda online y marketplace."
-    />
-  </head>
-
-  <body class="bg-white text-neutral-900">
+<BaseLayout
+  title="Nexuit | Inventario y productos, modular y escalable"
+  description="Nexuit es el núcleo modular para controlar inventario y catálogo: variantes, almacenes y movimientos auditables. Listo para escalar a POS, fabricación, tienda online y marketplace."
+  path="/"
+>
     <!-- Header -->
     <header class="sticky top-0 z-50 border-b border-neutral-200/60 bg-white/80 backdrop-blur">
       <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
@@ -347,5 +340,4 @@ const APP_URL = "https://app.nexuit.app";
         </div>
       </div>
     </footer>
-  </body>
-</html>
+</BaseLayout>
