@@ -17,7 +17,7 @@ const {
 
 const SITE_URL = 'https://nexuit.app';
 const canonicalUrl = new URL(path, SITE_URL).toString();
-const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
+const socialImageUrl = new URL('/og.png', SITE_URL).toString();
 ---
 
 <html lang="es">
@@ -45,7 +45,18 @@ const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={socialImageUrl} />
 
-    {noindex && <meta name="robots" content="noindex, nofollow" />}
+    {noindex ? (
+      <meta name="robots" content="noindex, nofollow" />
+    ) : (
+      <meta name="robots" content="index,follow" />
+    )}
+
+    <!-- Cloudflare Web Analytics (placeholder) -->
+    <script
+      defer
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon='{"token":"CF_TOKEN_AQUI"}'
+    ></script>
   </head>
 
   <body class="site-shell grain-overlay">

@@ -5,18 +5,19 @@ interface FaqItem {
 }
 
 interface Props {
-  appUrl: string;
   primaryCtaClass: string;
   secondaryCtaClass: string;
   faqs: FaqItem[];
 }
 
-const { appUrl, primaryCtaClass, secondaryCtaClass, faqs } = Astro.props;
+const { primaryCtaClass, secondaryCtaClass, faqs } = Astro.props;
 ---
 
-<section id="faq" class="mx-auto max-w-6xl px-4 py-14">
-  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Objeciones comunes</div>
-  <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">FAQ</h2>
+<section id="faq" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
+  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan y operación</div>
+  <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
+    Preguntas antes de empezar
+  </h2>
 
   <div class="mt-8 grid gap-4 md:grid-cols-2">
     {faqs.map((faq) => (
@@ -27,19 +28,26 @@ const { appUrl, primaryCtaClass, secondaryCtaClass, faqs } = Astro.props;
     ))}
   </div>
 
-  <div class="mt-10 rounded-[2rem] border border-[color:var(--line)] bg-[rgba(255,255,255,0.92)] p-8 shadow-[0_18px_40px_rgba(15,23,42,0.08)]">
-    <h3 class="text-2xl font-semibold tracking-tight text-[color:var(--ink)]">¿Listo para ordenar tu operación base?</h3>
-    <p class="mt-3 max-w-2xl text-sm leading-7 text-[color:var(--muted)]">
-      Entra a Nexuit y arranca con Inventario + Productos. Si hoy operas con hojas sueltas o
-      sistemas desconectados, este es el punto donde empiezas a trabajar con una sola fuente de
-      verdad.
+  <div class="mt-10 rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_38%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
+    <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Cierre</div>
+    <h3 class="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-[color:var(--ink)]">
+      Empieza a controlar tu inventario hoy.
+    </h3>
+    <p class="mt-4 max-w-2xl text-sm leading-7 text-[color:var(--muted)]">
+      Empieza por $199 MXN/mes.
     </p>
+    <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">
+      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Base única</span>
+      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">POS incluido</span>
+      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Sin rehacer después</span>
+      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Escalable por módulos</span>
+    </div>
     <div class="mt-5 flex flex-col gap-3 sm:flex-row">
-      <a href={appUrl} class={primaryCtaClass} rel="noopener noreferrer">
-        Acceder a Nexuit
+      <a href="/signup" data-cta="footer-create-account" class={primaryCtaClass}>
+        Crear cuenta
       </a>
-      <a href="#producto" class={secondaryCtaClass}>
-        Ver el problema que resuelve
+      <a href="#como-funciona" class={secondaryCtaClass}>
+        Ver cómo funciona
       </a>
     </div>
   </div>

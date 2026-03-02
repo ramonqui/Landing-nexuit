@@ -5,12 +5,12 @@
   <rect x="112" y="116" width="158" height="46" rx="23" fill="#171717" stroke="#FFFFFF" stroke-opacity="0.08"/>
   <text x="138" y="145" fill="#F5F5F5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEXUIT CORE</text>
   <text x="112" y="242" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">
-    <tspan x="112" dy="0">Inventario y catálogo</tspan>
-    <tspan x="112" dy="76">sin caos operativo</tspan>
+    <tspan x="112" dy="0">Inventario + POS</tspan>
+    <tspan x="112" dy="76">desde $199 MXN</tspan>
   </text>
   <text x="112" y="378" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
-    <tspan x="112" dy="0">Variantes, almacenes y movimientos auditables</tspan>
-    <tspan x="112" dy="40">sobre una base modular lista para escalar.</tspan>
+    <tspan x="112" dy="0">Controla inventario físico, variantes, almacenes</tspan>
+    <tspan x="112" dy="40">y ventas en una sola base.</tspan>
   </text>
   <rect x="112" y="454" width="262" height="64" rx="18" fill="#FAFAFA"/>
   <text x="151" y="494" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">nexuit.app</text>

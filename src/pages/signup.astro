@@ -1,0 +1,125 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const primaryCtaClass =
+  'inline-flex items-center justify-center rounded-2xl bg-[color:var(--brand)] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_32px_rgba(37,99,235,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)]';
+const secondaryCtaClass =
+  'inline-flex items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-slate-50';
+
+const monthlySignupUrl = 'https://app.nexuit.app/signup?plan=monthly';
+const yearlySignupUrl = 'https://app.nexuit.app/signup?plan=yearly';
+const loginUrl = 'https://app.nexuit.app/login';
+---
+
+<BaseLayout
+  title="Nexuit — Suscripción y activación"
+  description="Elige tu plan de Nexuit y continúa a la aplicación para activar tu cuenta y empezar a operar con inventario y POS."
+  path="/signup"
+>
+  <section class="mx-auto max-w-6xl px-4 pb-16 pt-12 md:pt-20">
+    <div class="grid gap-10 md:grid-cols-[1.05fr_0.95fr]">
+      <div>
+        <div class="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.9)] px-4 py-1.5 text-[11px] tracking-[0.18em] text-[color:var(--muted)] uppercase shadow-[0_8px_22px_rgba(148,163,184,0.12)]">
+          <span class="font-semibold text-[color:var(--brand)]">Nexuit</span>
+          <span class="text-[color:var(--accent)]">•</span>
+          <span>Suscripción</span>
+        </div>
+
+        <h1 class="mt-5 max-w-2xl text-5xl font-semibold leading-[0.92] tracking-tight text-[color:var(--ink)] md:text-7xl">
+          Activa tu cuenta y entra a operar con inventario y POS en una sola base
+        </h1>
+
+        <p class="mt-5 max-w-xl text-base leading-8 text-[color:var(--muted)] md:text-lg">
+          Elige mensual o anual y continúa a la aplicación para crear tu cuenta, activar tu plan y
+          empezar con tu primer negocio.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-2">
+          <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Inventario con variantes</span>
+          <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">POS incluido</span>
+          <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Garantía de 7 días</span>
+        </div>
+
+        <div class="mt-8 grid gap-4 md:grid-cols-3">
+          <div class="glass-card rounded-[1.75rem] p-5">
+            <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand)]">Paso 1</div>
+            <div class="mt-3 text-sm font-semibold text-[color:var(--ink)]">Elige plan</div>
+            <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
+              Mensual o anual según cómo prefieras arrancar.
+            </p>
+          </div>
+          <div class="glass-card rounded-[1.75rem] p-5">
+            <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand)]">Paso 2</div>
+            <div class="mt-3 text-sm font-semibold text-[color:var(--ink)]">Crea tu cuenta</div>
+            <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
+              El registro ocurre dentro de la aplicación de Nexuit.
+            </p>
+          </div>
+          <div class="glass-card rounded-[1.75rem] p-5">
+            <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand)]">Paso 3</div>
+            <div class="mt-3 text-sm font-semibold text-[color:var(--ink)]">Empieza a operar</div>
+            <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
+              Configura almacenes, productos y empieza a vender.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <div class="rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_38%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan Mensual</div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
+            $199 MXN / mes
+          </h2>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Usado en producción sin sobreventa.
+          </p>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Ideal para fabricantes y vendedores con inventario físico.
+          </p>
+
+          <div class="mt-6 grid gap-3">
+            <div class="glass-card rounded-[1.25rem] p-4 text-sm leading-7 text-[color:var(--ink)]">
+              Inventario con variantes, control por almacén, POS, códigos de barras y empaque.
+            </div>
+            <div class="glass-card rounded-[1.25rem] p-4 text-sm leading-7 text-[color:var(--ink)]">
+              Garantía de 7 días. Sin riesgo: si no te funciona, te devolvemos tu dinero.
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <a href={monthlySignupUrl} class={primaryCtaClass}>
+              Empezar por $199 MXN
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-[2rem] p-8">
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan Anual</div>
+          <div class="mt-3 text-2xl font-semibold tracking-tight text-[color:var(--ink)]">
+            $1,990 MXN / año
+          </div>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Ahorra 2 meses y entra al mismo flujo de activación dentro de la app.
+          </p>
+          <div class="mt-5 flex flex-col gap-3 sm:flex-row">
+            <a href={yearlySignupUrl} class={secondaryCtaClass}>
+              Elegir anual
+            </a>
+            <a href={loginUrl} class={secondaryCtaClass}>
+              Ya tengo cuenta
+            </a>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-[2rem] p-6">
+          <div class="text-sm font-semibold text-[color:var(--ink)]">Conexión con la aplicación</div>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
+            Al continuar, Nexuit te lleva a <span class="font-semibold text-[color:var(--ink)]">app.nexuit.app</span>
+            para crear tu cuenta, asignar tu plan y empezar el onboarding del negocio.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
