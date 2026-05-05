@@ -1,7 +1,14 @@
+---
+const registerUrl = 'https://app.nexuit.com/register';
+const loginUrl = 'https://app.nexuit.com/login';
+---
+
 <footer class="border-t border-[color:var(--line)]">
   <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-[color:var(--muted)] md:flex-row md:items-center md:justify-between">
-    <div>© Nexuit. Inventario y POS en una sola base.</div>
-    <div class="flex gap-4">
+    <div>© Nexuit. Suite SaaS para inventario, ventas y operación multicanal.</div>
+    <div class="flex flex-wrap gap-4">
+      <a class="transition-colors hover:text-[color:var(--ink)]" href={registerUrl}>Crear empresa</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href={loginUrl}>Iniciar sesión</a>
       <a class="transition-colors hover:text-[color:var(--ink)]" href="mailto:hola@nexuit.app">Soporte</a>
       <span class="text-slate-300">|</span>
       <a class="transition-colors hover:text-[color:var(--ink)]" href="/privacidad">Privacidad</a>

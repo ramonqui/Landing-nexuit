@@ -11,120 +11,173 @@ const primaryCtaClass =
 const secondaryCtaClass =
   'inline-flex items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-slate-50';
 
-const upcomingModules = [
-  { title: 'Punto de venta (POS)', desc: 'Venta y operación en mostrador sobre el mismo inventario.' },
-  { title: 'Fabricación', desc: 'Planeación y control de producción basado en variantes.' },
-  { title: 'Tienda online', desc: 'Publica tu catálogo en tu propia tienda.' },
-  { title: 'Marketplace', desc: 'Habilita el canal marketplace sin duplicar catálogo.' },
-  { title: 'Integraciones', desc: 'Conecta envíos, marketplaces y herramientas externas.' },
+const registerUrl = 'https://app.nexuit.com/register';
+const loginUrl = 'https://app.nexuit.com/login';
+
+type ModuleTone = 'available' | 'strategic' | 'capacity';
+
+interface ModuleCard {
+  title: string;
+  desc: string;
+  status: string;
+  tone: ModuleTone;
+}
+
+const moduleCards: ModuleCard[] = [
+  {
+    title: 'Catálogo',
+    desc: 'Productos, variantes, SKUs y clasificación comercial listos para operar.',
+    status: 'Disponible',
+    tone: 'available',
+  },
+  {
+    title: 'Inventario',
+    desc: 'Stock visible por sucursal, almacén y ubicación interna.',
+    status: 'Disponible',
+    tone: 'available',
+  },
+  {
+    title: 'Punto de venta (POS)',
+    desc: 'Operación de mostrador conectada al inventario y al contexto de stock.',
+    status: 'Disponible',
+    tone: 'available',
+  },
+  {
+    title: 'Despachos',
+    desc: 'Picking, packing y envío conectados a cada venta.',
+    status: 'Disponible',
+    tone: 'available',
+  },
+  {
+    title: 'Tienda online',
+    desc: 'Dirección estratégica para que el comercio digital use el mismo catálogo, variantes y stock.',
+    status: 'Dirección estratégica',
+    tone: 'strategic',
+  },
+  {
+    title: 'Compras y fabricación',
+    desc: 'Abastecimiento, proveedores y producción para negocios que ensamblan, transforman o fabrican.',
+    status: 'Por capacidades',
+    tone: 'capacity',
+  },
 ];
 
 const implementationPoints = [
   {
     title: 'Arranque rápido',
-    desc: 'Empieza con catálogo, variantes y almacenes sin pasar semanas configurando un ERP completo.',
+    desc: 'Crea empresa, catálogo, sucursales y almacenes con una estructura mínima clara.',
   },
   {
-    title: 'Operación ordenada',
-    desc: 'Cada movimiento deja rastro para que ventas, stock y expansión trabajen sobre el mismo dato.',
+    title: 'Operación conectada',
+    desc: 'Cada venta y movimiento conserva stock, sucursal, almacén y salida operativa.',
   },
   {
-    title: 'Escalado sin rehacer',
-    desc: 'Cuando actives POS, fabricación o ecommerce, la base ya está construida sobre el mismo núcleo.',
+    title: 'Crecimiento modular',
+    desc: 'Activa más capacidades cuando tu operación pida compras, fabricación o comercio digital.',
   },
 ];
 
 const faqs = [
   {
-    q: '¿Qué incluye el Plan Inicial de $199 MXN al mes?',
-    a: 'Incluye inventario con variantes, control por almacén, movimientos auditables, POS para descontar inventario correctamente, códigos de barras y flujo de empaque validado.',
+    q: '¿Qué es Nexuit?',
+    a: 'Nexuit es una suite SaaS para ordenar inventario, ventas físicas, POS, ventas online y operación en negocios con productos, sucursales y almacenes.',
   },
   {
-    q: '¿El POS ya viene incluido?',
-    a: 'Sí. El Plan Inicial ya incluye POS para registrar ventas y reducir inventario sobre la misma base de datos.',
+    q: '¿El POS está disponible?',
+    a: 'Sí. POS se presenta como disponible para operación de mostrador, conectado al mismo inventario y contexto de stock.',
   },
   {
-    q: '¿Me sirve si vendo en tienda y ecommerce?',
-    a: 'Sí. Nexuit está pensado para operaciones con inventario físico que venden en tienda, ecommerce o ambos, sin depender de hojas de cálculo ni plugins desconectados.',
+    q: '¿La tienda online ya se publica automáticamente?',
+    a: 'No se comunica como publicación automática cerrada. Nexuit la presenta como dirección estratégica: comercio digital pensado para nacer del mismo catálogo, variantes y stock operativo.',
   },
   {
-    q: '¿Puedo pagar anual?',
-    a: 'Sí. También puedes elegir el plan anual por $1,990 MXN al año, con un ahorro equivalente a 2 meses frente al pago mensual.',
+    q: '¿Tengo que activar todo desde el primer día?',
+    a: 'No. Nexuit se organiza por capacidades para que empieces con una base operativa clara y actives más módulos conforme tu negocio crece.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Nexuit — Inventario y POS desde $199 MXN/mes"
-  description="Ordena tu inventario físico con variantes, almacenes y POS. Evita sobreventa y errores. Plan inicial $199 MXN/mes con garantía de 7 días."
+  title="Nexuit — Inventario, ventas y operación multicanal"
+  description="Suite SaaS para ordenar productos, sucursales, almacenes, POS, ventas online y despachos sobre el mismo inventario operativo."
   path="/"
 >
-  <LandingHeader />
-  <HeroSection primaryCtaClass={primaryCtaClass} secondaryCtaClass={secondaryCtaClass} />
+  <LandingHeader registerUrl={registerUrl} loginUrl={loginUrl} />
+  <HeroSection
+    primaryCtaClass={primaryCtaClass}
+    secondaryCtaClass={secondaryCtaClass}
+    registerUrl={registerUrl}
+    loginUrl={loginUrl}
+  />
   <ValueSections
     primaryCtaClass={primaryCtaClass}
+    secondaryCtaClass={secondaryCtaClass}
+    registerUrl={registerUrl}
+    loginUrl={loginUrl}
     implementationPoints={implementationPoints}
-    upcomingModules={upcomingModules}
+    moduleCards={moduleCards}
   />
   <section id="plan" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
-    <div class="rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_38%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
-        Plan Inicial
-      </div>
-      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-        Plan Inicial
-      </h2>
-      <div class="mt-5 text-4xl font-semibold tracking-tight text-[color:var(--ink)] md:text-5xl">
-        $199 MXN / mes
-      </div>
-      <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
-        Usado en producción sin sobreventa.
-      </p>
-      <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
-        Ideal para fabricantes y vendedores con inventario físico.
-      </p>
-      <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
-        Anual: $1,990 MXN / año (ahorras 2 meses)
-      </p>
-
-      <div class="mt-8 grid gap-4 md:grid-cols-2">
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">
-            Inventario con variantes reales (tallas, colores, etc.)
+    <div class="rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_42%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
+      <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-start">
+        <div>
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
+            Planes y capacidades
+          </div>
+          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
+            Empieza con una base operativa clara
+          </h2>
+          <p class="mt-4 text-sm leading-7 text-[color:var(--muted)]">
+            Nexuit se activa por capacidades. Tu negocio puede empezar con inventario, catálogo,
+            POS y salidas, y crecer hacia más módulos cuando sea momento.
+          </p>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href={registerUrl} data-cta="pricing-create-company" class={primaryCtaClass}>
+              Crear empresa
+            </a>
+            <a href={loginUrl} data-cta="pricing-login" class={secondaryCtaClass}>
+              Iniciar sesión
+            </a>
           </div>
         </div>
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">Control por almacén</div>
-        </div>
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">Movimientos auditables</div>
-        </div>
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">
-            POS para reducir inventario correctamente
-          </div>
-        </div>
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">Códigos de barras e impresión</div>
-        </div>
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-sm leading-7 text-[color:var(--ink)]">Flujo de empaque validado</div>
-        </div>
-      </div>
 
-      <p class="mt-6 text-sm leading-7 text-[color:var(--muted)]">
-        Garantía de 7 días. Sin riesgo: si no te funciona, te devolvemos tu dinero.
-      </p>
-      <div class="mt-6">
-        <a href="/signup" data-cta="pricing-create-account" class={primaryCtaClass}>
-          Empezar por $199 MXN
-        </a>
+        <div class="glass-card rounded-[1.75rem] p-6">
+          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan inicial</div>
+          <div class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)]">
+            Desde $199 MXN / mes
+          </div>
+          <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
+            Anual: $1,990 MXN / año.
+          </p>
+
+          <div class="mt-6 grid gap-3 sm:grid-cols-2">
+            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
+              Catálogo, variantes y SKUs.
+            </div>
+            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
+              Stock por sucursal, almacén y ubicación.
+            </div>
+            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
+              POS disponible sobre el mismo inventario.
+            </div>
+            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
+              Salidas, empaque y despachos con contexto.
+            </div>
+          </div>
+
+          <p class="mt-5 text-sm leading-7 text-[color:var(--muted)]">
+            La tienda online se presenta como evolución estratégica del producto, no como
+            publicación automática cerrada dentro del plan.
+          </p>
+        </div>
       </div>
     </div>
   </section>
   <FaqSection
     primaryCtaClass={primaryCtaClass}
     secondaryCtaClass={secondaryCtaClass}
+    registerUrl={registerUrl}
+    loginUrl={loginUrl}
     faqs={faqs}
   />
   <LandingFooter />
