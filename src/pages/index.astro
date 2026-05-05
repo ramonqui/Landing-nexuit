@@ -9,7 +9,7 @@ import ValueSections from '../components/landing/ValueSections.astro';
 const PRIMARY_CTA_LABEL = 'Probar 7 días gratis';
 const primaryCtaHref = 'https://app.nexuit.com/register';
 const loginUrl = 'https://app.nexuit.com/login';
-const ctaMicrocopy = 'Plan más completo · Sin tarjeta · Luego eliges tu plan';
+const ctaMicrocopy = 'Plan completo incluido · Sin tarjeta · Luego eliges tu plan';
 
 const navItems = [
   { label: 'Producto', href: '#producto' },
@@ -34,23 +34,23 @@ const problemCards = [
   },
   {
     title: 'Pedidos mal empacados',
-    desc: 'Productos incompletos o equivocados salen sin control.',
+    desc: 'Errores que generan devoluciones, reclamos y costos.',
     icon: 'box',
   },
   {
     title: 'Diferencias sin explicación',
-    desc: 'No sabes si viene de venta, salida, ajuste, traslado o empaque.',
+    desc: 'No sabes si el faltante viene de venta, salida, ajuste o empaque.',
     icon: 'shield',
   },
 ] as const;
 
 const operationSteps = [
-  { title: 'Catálogo', desc: 'Productos, variantes y códigos.', icon: 'catalog' },
-  { title: 'Stock', desc: 'Existencias por sucursal o almacén.', icon: 'warehouse' },
-  { title: 'Venta', desc: 'Cada venta descuenta inventario.', icon: 'movement' },
-  { title: 'Organización', desc: 'Pedidos listos para preparar.', icon: 'layers' },
-  { title: 'Empaque', desc: 'Validación antes de entregar.', icon: 'box' },
-  { title: 'Conciliación', desc: 'Compara y explica diferencias.', icon: 'check' },
+  { title: 'Catálogo', desc: 'Productos y SKUs.', icon: 'catalog' },
+  { title: 'Stock', desc: 'Existencias por ubicación.', icon: 'warehouse' },
+  { title: 'Venta', desc: 'Descuenta inventario.', icon: 'movement' },
+  { title: 'Organización', desc: 'Pedidos listos.', icon: 'layers' },
+  { title: 'Empaque', desc: 'Validación final.', icon: 'box' },
+  { title: 'Conciliación', desc: 'Explica diferencias.', icon: 'check' },
 ] as const;
 
 const reconciliationRows = [
@@ -113,7 +113,6 @@ const plans = [
       'Organización de pedidos',
       'Empaque validado',
       'Historial de movimientos',
-      'Usuarios operativos',
     ],
   },
   {
@@ -125,14 +124,13 @@ const plans = [
       'Todo lo de Operativo',
       'Múltiples ubicaciones',
       'Canales de venta',
-      'Reglas por sucursal',
       'Despachos',
       'Reportes operativos',
     ],
   },
   {
     name: 'Completo',
-    badge: 'Incluido en la prueba gratis',
+    badge: 'Incluido en tu prueba gratis',
     desc: 'Para operaciones que necesitan máximo control y trazabilidad.',
     price: 'Desde $1,199 MXN / mes',
     icon: 'shield',
@@ -142,7 +140,6 @@ const plans = [
       'Conciliación avanzada',
       'Conteos físicos',
       'Ajustes controlados',
-      'Compras y fabricación',
       'Alertas de diferencias',
       'Auditoría operativa',
     ],
@@ -162,12 +159,12 @@ const audienceCards = [
   },
   {
     title: 'Almacenes y distribución',
-    desc: 'Múltiples ubicaciones, traslados y despachos.',
+    desc: 'Ubicaciones, traslados y despachos.',
     icon: 'truck',
   },
   {
     title: 'Empaque y fulfillment',
-    desc: 'Organiza, valida y despacha sin errores.',
+    desc: 'Valida pedidos antes de entregar.',
     icon: 'box',
   },
 ] as const;
@@ -175,11 +172,11 @@ const audienceCards = [
 const faqs = [
   {
     q: '¿Qué plan incluye la prueba gratis?',
-    a: 'La prueba gratuita incluye el plan más completo de Nexuit durante 7 días.',
+    a: 'La prueba gratuita incluye el plan Completo de Nexuit durante 7 días.',
   },
   {
     q: '¿Necesito tarjeta para empezar?',
-    a: 'No. Puedes probar el plan más completo por 7 días sin ingresar tarjeta.',
+    a: 'No. Puedes probar el plan Completo por 7 días sin ingresar tarjeta.',
   },
   {
     q: '¿Qué pasa cuando termina la prueba?',
@@ -198,7 +195,7 @@ const faqs = [
 
 <BaseLayout
   title="Nexuit | Inventario, ventas, empaque y conciliación"
-  description="Controla stock, ventas, organización, empaque y conciliación de inventario desde una sola base. Prueba el plan más completo de Nexuit por 7 días, sin tarjeta."
+  description="Controla stock, ventas, organización, empaque y conciliación de inventario desde una sola base. Prueba el plan Completo de Nexuit por 7 días, sin tarjeta."
   path="/"
 >
   <LandingHeader
@@ -225,13 +222,11 @@ const faqs = [
       audienceCards={audienceCards}
       primaryCtaHref={primaryCtaHref}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
-      ctaMicrocopy={ctaMicrocopy}
     />
     <FaqSection
       faqs={faqs}
       primaryCtaHref={primaryCtaHref}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
-      ctaMicrocopy={ctaMicrocopy}
     />
   </main>
   <LandingFooter navItems={navItems} />

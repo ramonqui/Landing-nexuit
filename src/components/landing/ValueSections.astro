@@ -61,7 +61,6 @@ interface Props {
   audienceCards: AudienceCard[];
   primaryCtaHref: string;
   primaryCtaLabel: string;
-  ctaMicrocopy: string;
 }
 
 const {
@@ -75,11 +74,10 @@ const {
   audienceCards,
   primaryCtaHref,
   primaryCtaLabel,
-  ctaMicrocopy,
 } = Astro.props;
 
 const statusClasses = {
-  danger: 'bg-orange-50 text-orange-700',
+  danger: 'bg-red-50 text-red-700',
   success: 'bg-emerald-50 text-emerald-700',
   info: 'bg-blue-50 text-blue-700',
 } as const;
@@ -95,10 +93,10 @@ const statusClasses = {
         </h2>
       </div>
 
-      <div class="grid gap-4 md:grid-cols-3">
+      <div class="grid items-stretch gap-4 md:grid-cols-3">
         {problemCards.map((card) => (
-          <article class="glass-card-strong rounded-[1.75rem] p-6">
-            <div class="mb-5 flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.08)] text-[color:var(--brand)]">
+          <article class="glass-card-strong h-full rounded-[1.75rem] p-7">
+            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl bg-red-50 text-[color:var(--danger)]">
               <IconGlyph name={card.icon} />
             </div>
             <h3 class="text-lg font-black text-[color:var(--ink)]">{card.title}</h3>
@@ -119,18 +117,18 @@ const statusClasses = {
       </h2>
     </div>
 
-    <div class="grid gap-3 md:grid-cols-6 md:items-start">
+    <div class="grid gap-4 md:grid-cols-6 md:items-stretch">
       {operationSteps.map((step, index) => (
         <div class="relative">
-          <article class="glass-card rounded-[1.5rem] p-4 text-center md:min-h-[10.5rem]">
-            <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white text-[color:var(--brand)] shadow-[0_12px_26px_rgba(11,92,255,0.1)]">
+          <article class="glass-card h-full rounded-[1.5rem] p-5 text-center md:min-h-[11.25rem]">
+            <div class="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white text-[color:var(--brand)] shadow-[0_12px_26px_rgba(11,92,255,0.1)]">
               <IconGlyph name={step.icon} class="h-6 w-6" />
             </div>
             <div class="mt-4 text-sm font-black text-[color:var(--ink)]">{index + 1}. {step.title}</div>
             <p class="mt-2 text-xs leading-5 text-[color:var(--muted)]">{step.desc}</p>
           </article>
           {index < operationSteps.length - 1 && (
-            <div class="hidden md:block absolute left-[calc(100%-0.25rem)] top-14 z-10 text-xl font-black text-slate-400">→</div>
+            <div class="absolute left-[calc(100%-0.35rem)] top-16 z-10 hidden text-xl font-black text-slate-300 md:block">→</div>
           )}
         </div>
       ))}
@@ -140,8 +138,8 @@ const statusClasses = {
 
 <section class="section-band border-y">
   <div class="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 md:px-6 md:py-18 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-    <div class="glass-card-strong overflow-hidden rounded-[2rem]">
-      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4">
+    <div class="glass-card-strong overflow-hidden rounded-[2rem] shadow-[0_26px_58px_rgba(7,27,58,0.1)]">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4 md:px-6">
         <div class="text-sm font-black text-[color:var(--ink)]">Conciliación de inventario</div>
         <div class="rounded-xl border border-[color:var(--line)] bg-white px-3 py-1.5 text-xs font-bold text-[color:var(--muted)]">Almacén Norte</div>
       </div>
@@ -162,7 +160,7 @@ const statusClasses = {
         ))}
       </div>
       <div class="hidden overflow-x-auto sm:block">
-        <table class="w-full min-w-[42rem] text-left text-sm">
+        <table class="w-full min-w-[38rem] text-left text-sm">
           <thead class="text-xs font-bold uppercase tracking-[0.12em] text-[color:var(--muted)]">
             <tr class="border-b border-[color:var(--line)]">
               <th class="px-5 py-4">Producto</th>
@@ -192,15 +190,15 @@ const statusClasses = {
     <div>
       <div class="text-xs font-black uppercase tracking-[0.22em] text-[color:var(--brand)]">Conciliación que te da control</div>
       <h2 class="mt-3 text-3xl font-bold tracking-[-0.03em] text-[color:var(--ink)] md:text-5xl">
-        Detecta diferencias antes de perder mercancía.
+        Detecta diferencias antes de que se vuelvan pérdidas.
       </h2>
       <p class="mt-5 max-w-xl text-[16px] leading-8 text-[color:var(--muted)]">
         Compara conteos físicos contra ventas, salidas y movimientos. Encuentra faltantes, errores operativos o ajustes pendientes.
       </p>
       <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
         {reconciliationBenefits.map((benefit) => (
-          <div>
-            <div class="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white text-[color:var(--brand)] shadow-[0_12px_26px_rgba(7,27,58,0.06)]">
+          <div class="rounded-2xl border border-[color:var(--line)] bg-white p-4 shadow-[0_14px_28px_rgba(7,27,58,0.06)]">
+            <div class="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.08)] text-[color:var(--brand)]">
               <IconGlyph name={benefit.icon} />
             </div>
             <div class="text-sm font-black leading-snug text-[color:var(--ink)]">{benefit.title}</div>
@@ -236,10 +234,10 @@ const statusClasses = {
       </div>
     </div>
 
-    <div class="relative min-h-[28rem] min-w-0 overflow-hidden">
-      <div class="absolute inset-x-6 bottom-3 h-16 rounded-full bg-[rgba(7,27,58,0.18)] blur-2xl"></div>
+    <div class="relative min-h-[28rem] min-w-0 overflow-hidden lg:min-h-[31rem]">
+      <div class="absolute inset-x-8 bottom-3 h-16 rounded-full bg-[rgba(7,27,58,0.12)] blur-2xl"></div>
       <div class="relative mx-auto max-w-3xl">
-        <div class="rounded-t-[1.6rem] border-[8px] border-[#151923] bg-white shadow-[0_28px_70px_rgba(7,27,58,0.18)] sm:border-[10px]">
+        <div class="rounded-t-[1.6rem] border-[8px] border-[#151923] bg-white shadow-[0_24px_56px_rgba(7,27,58,0.14)] sm:border-[10px]">
           <div class="grid min-h-[19rem] grid-cols-[5.25rem_minmax(0,1fr)] overflow-hidden rounded-t-xl bg-white sm:grid-cols-[7rem_1fr]">
             <div class="bg-[color:var(--page-bg-soft)] p-3 text-[10px] text-[color:var(--muted)] sm:p-4 sm:text-xs">
               <div class="mb-4 h-2 w-14 rounded-full bg-[color:var(--brand)]"></div>
@@ -270,10 +268,10 @@ const statusClasses = {
             </div>
           </div>
         </div>
-        <div class="mx-auto h-4 max-w-[80%] rounded-b-[2rem] bg-[#0f172a] shadow-[0_18px_34px_rgba(7,27,58,0.18)]"></div>
+        <div class="mx-auto h-4 max-w-[80%] rounded-b-[2rem] bg-[#0f172a] shadow-[0_14px_28px_rgba(7,27,58,0.14)]"></div>
       </div>
 
-      <div class="relative z-10 mx-auto -mt-48 w-[15rem] rounded-[2.2rem] border-[10px] border-[#111827] bg-white p-4 shadow-[0_28px_70px_rgba(7,27,58,0.22)] sm:ml-auto sm:mr-8">
+      <div class="relative z-10 mx-auto -mt-44 w-[15rem] rounded-[2.2rem] border-[10px] border-[#111827] bg-white p-4 shadow-[0_24px_58px_rgba(7,27,58,0.18)] lg:absolute lg:bottom-6 lg:right-8 lg:mt-0">
         <div class="flex items-center justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--brand)]">Empaque</div>
@@ -312,15 +310,15 @@ const statusClasses = {
         4 planes para crecer sin cambiar de sistema.
       </h2>
       <p class="mt-4 text-[16px] leading-8 text-[color:var(--muted)]">
-        Empieza con 7 días gratis del plan más completo, sin tarjeta. Al terminar, elige el plan que mejor se adapte a tu negocio.
+        Empieza probando el plan Completo por 7 días, sin tarjeta. Al terminar, eliges el plan que mejor se adapte a tu operación.
       </p>
     </div>
 
-    <div class="mt-10 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+    <div class="mt-10 grid items-stretch gap-4 md:grid-cols-2 xl:grid-cols-4">
       {plans.map((plan) => (
-        <article class={`relative flex flex-col rounded-[1.75rem] border bg-white p-6 shadow-[0_20px_48px_rgba(7,27,58,0.08)] ${plan.highlighted ? 'border-[color:var(--brand)] ring-2 ring-[rgba(11,92,255,0.08)]' : 'border-[color:var(--line)]'}`}>
+        <article class={`relative flex h-full flex-col rounded-[1.75rem] border bg-white p-6 shadow-[0_18px_42px_rgba(7,27,58,0.07)] ${plan.highlighted ? 'border-[color:var(--brand)] ring-2 ring-[rgba(11,92,255,0.08)] xl:-translate-y-3' : 'border-[color:var(--line)]'}`}>
           {plan.badge && (
-            <div class="absolute -top-4 left-4 right-4 rounded-t-2xl bg-[color:var(--navy)] px-4 py-2 text-center text-xs font-bold text-white">
+            <div class="absolute -top-4 left-4 right-4 rounded-t-2xl bg-[color:var(--brand)] px-4 py-2 text-center text-xs font-bold text-white shadow-[0_12px_26px_rgba(11,92,255,0.2)]">
               {plan.badge}
             </div>
           )}
@@ -345,13 +343,13 @@ const statusClasses = {
       ))}
     </div>
 
-    <div class="mx-auto mt-8 flex max-w-4xl flex-col items-center gap-4 rounded-[1.75rem] border border-[color:var(--line)] bg-white p-5 text-center shadow-[0_18px_42px_rgba(7,27,58,0.08)] md:flex-row md:justify-between md:text-left">
+    <div class="mx-auto mt-10 flex max-w-5xl flex-col items-center gap-5 rounded-[2rem] border border-[rgba(11,92,255,0.18)] bg-white p-6 text-center shadow-[0_22px_50px_rgba(7,27,58,0.09)] md:flex-row md:justify-between md:text-left">
       <div class="flex items-center gap-4">
-        <div class="hidden h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.08)] text-[color:var(--brand)] sm:flex">
+        <div class="hidden h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.1)] text-[color:var(--brand)] sm:flex">
           <IconGlyph name="gift" />
         </div>
         <div>
-          <div class="font-black text-[color:var(--ink)]">Prueba el plan más completo por 7 días, sin tarjeta.</div>
+          <div class="font-black text-[color:var(--ink)]">Prueba el plan Completo por 7 días, sin tarjeta.</div>
           <p class="mt-1 text-sm text-[color:var(--muted)]">Luego elige el plan que necesita tu operación.</p>
         </div>
       </div>
@@ -359,7 +357,7 @@ const statusClasses = {
         <a href={primaryCtaHref} data-cta="plans-trial" class="inline-flex w-full justify-center rounded-2xl bg-[color:var(--brand)] px-6 py-3 text-sm font-bold text-white shadow-[0_16px_30px_rgba(11,92,255,0.22)] md:w-auto">
           {primaryCtaLabel}
         </a>
-        <div class="mt-2 text-center text-xs font-medium text-[color:var(--muted)]">{ctaMicrocopy}</div>
+        <div class="mt-2 text-center text-xs font-medium text-[color:var(--muted)]">Acceso completo · Sin tarjeta · Luego eliges tu plan</div>
       </div>
     </div>
   </div>
@@ -374,8 +372,8 @@ const statusClasses = {
   </div>
   <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
     {audienceCards.map((card) => (
-      <article class="glass-card rounded-[1.75rem] p-6">
-        <div class="mb-4 flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[color:var(--brand)] shadow-[0_12px_26px_rgba(7,27,58,0.07)]">
+      <article class="glass-card h-full rounded-[1.75rem] p-7">
+        <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[color:var(--brand)] shadow-[0_12px_26px_rgba(7,27,58,0.07)]">
           <IconGlyph name={card.icon} />
         </div>
         <h3 class="font-black text-[color:var(--ink)]">{card.title}</h3>

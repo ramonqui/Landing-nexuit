@@ -65,14 +65,14 @@ body {
 .glass-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  box-shadow: 0 18px 42px rgba(7, 27, 58, 0.08);
+  box-shadow: 0 16px 36px rgba(7, 27, 58, 0.055);
   backdrop-filter: blur(12px);
 }
 
 .glass-card-strong {
   background: var(--surface-strong);
   border: 1px solid var(--line);
-  box-shadow: 0 22px 52px rgba(7, 27, 58, 0.11);
+  box-shadow: 0 20px 44px rgba(7, 27, 58, 0.075);
 }
 
 .section-band {
@@ -83,6 +83,12 @@ body {
 ::selection {
   background: rgba(37, 99, 235, 0.18);
   color: var(--ink);
+}
+
+:where(a, button, summary):focus-visible {
+  outline: 3px solid rgba(11, 92, 255, 0.32);
+  outline-offset: 3px;
+  border-radius: 1rem;
 }
 
 @media (prefers-reduced-motion: reduce) {
