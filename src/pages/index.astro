@@ -7,7 +7,7 @@ import LandingHeader from '../components/landing/LandingHeader.astro';
 import ValueSections from '../components/landing/ValueSections.astro';
 
 const PRIMARY_CTA_LABEL = 'Probar 7 días gratis';
-const primaryCtaHref = 'https://app.nexuit.com/register';
+const TRIAL_CTA_HREF = 'https://app.nexuit.com/register';
 const loginUrl = 'https://app.nexuit.com/login';
 const ctaMicrocopy = 'Plan completo incluido · Sin tarjeta · Luego eliges tu plan';
 
@@ -65,7 +65,7 @@ const reconciliationBenefits = [
   { title: 'Conteos físicos por ubicación', icon: 'layers' },
   { title: 'Historial de movimientos', icon: 'movement' },
   { title: 'Ajustes controlados', icon: 'check' },
-  { title: 'Trazabilidad total', icon: 'shield' },
+  { title: 'Trazabilidad operativa', icon: 'shield' },
 ] as const;
 
 const deviceBullets = [
@@ -92,7 +92,7 @@ const plans = [
   {
     name: 'Base',
     desc: 'Para negocios que quieren ordenar productos y stock.',
-    price: 'Desde $199 MXN / mes',
+    price: 'Desde $199 MXN/mes',
     icon: 'catalog',
     features: [
       'Catálogo',
@@ -105,7 +105,7 @@ const plans = [
   {
     name: 'Operativo',
     desc: 'Para negocios que venden y preparan pedidos.',
-    price: 'Desde $399 MXN / mes',
+    price: 'Desde $399 MXN/mes',
     icon: 'movement',
     features: [
       'Todo lo de Base',
@@ -118,7 +118,7 @@ const plans = [
   {
     name: 'Multicanal',
     desc: 'Para negocios con varias sucursales o canales.',
-    price: 'Desde $699 MXN / mes',
+    price: 'Desde $699 MXN/mes',
     icon: 'store',
     features: [
       'Todo lo de Operativo',
@@ -132,7 +132,7 @@ const plans = [
     name: 'Completo',
     badge: 'Incluido en tu prueba gratis',
     desc: 'Para operaciones que necesitan máximo control y trazabilidad.',
-    price: 'Desde $1,199 MXN / mes',
+    price: 'Desde $1,199 MXN/mes',
     icon: 'shield',
     highlighted: true,
     features: [
@@ -200,14 +200,14 @@ const faqs = [
 >
   <LandingHeader
     navItems={navItems}
-    primaryCtaHref={primaryCtaHref}
+    primaryCtaHref={TRIAL_CTA_HREF}
     primaryCtaLabel={PRIMARY_CTA_LABEL}
     loginUrl={loginUrl}
   />
   <main>
     <HeroSection
       chips={heroChips}
-      primaryCtaHref={primaryCtaHref}
+      primaryCtaHref={TRIAL_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
     />
@@ -220,13 +220,15 @@ const faqs = [
       packingItems={packingItems}
       plans={plans}
       audienceCards={audienceCards}
-      primaryCtaHref={primaryCtaHref}
+      primaryCtaHref={TRIAL_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
+      ctaMicrocopy={ctaMicrocopy}
     />
     <FaqSection
       faqs={faqs}
-      primaryCtaHref={primaryCtaHref}
+      primaryCtaHref={TRIAL_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
+      ctaMicrocopy={ctaMicrocopy}
     />
   </main>
   <LandingFooter navItems={navItems} />
