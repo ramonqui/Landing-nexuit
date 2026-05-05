@@ -6,179 +6,233 @@ import LandingFooter from '../components/landing/LandingFooter.astro';
 import LandingHeader from '../components/landing/LandingHeader.astro';
 import ValueSections from '../components/landing/ValueSections.astro';
 
-const primaryCtaClass =
-  'inline-flex items-center justify-center rounded-2xl bg-[color:var(--brand)] px-5 py-3 text-sm font-semibold text-white shadow-[0_16px_32px_rgba(37,99,235,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)]';
-const secondaryCtaClass =
-  'inline-flex items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white px-5 py-3 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-slate-50';
-
-const registerUrl = 'https://app.nexuit.com/register';
+const PRIMARY_CTA_LABEL = 'Probar 7 días gratis';
+const primaryCtaHref = 'https://app.nexuit.com/register';
 const loginUrl = 'https://app.nexuit.com/login';
+const ctaMicrocopy = 'Plan más completo · Sin tarjeta · Luego eliges tu plan';
 
-type ModuleTone = 'available' | 'strategic' | 'capacity';
-
-interface ModuleCard {
-  title: string;
-  desc: string;
-  status: string;
-  tone: ModuleTone;
-}
-
-const moduleCards: ModuleCard[] = [
-  {
-    title: 'Catálogo',
-    desc: 'Productos, variantes, SKUs y clasificación comercial listos para operar.',
-    status: 'Disponible',
-    tone: 'available',
-  },
-  {
-    title: 'Inventario',
-    desc: 'Stock visible por sucursal, almacén y ubicación interna.',
-    status: 'Disponible',
-    tone: 'available',
-  },
-  {
-    title: 'Punto de venta (POS)',
-    desc: 'Operación de mostrador conectada al inventario y al contexto de stock.',
-    status: 'Disponible',
-    tone: 'available',
-  },
-  {
-    title: 'Despachos',
-    desc: 'Picking, packing y envío conectados a cada venta.',
-    status: 'Disponible',
-    tone: 'available',
-  },
-  {
-    title: 'Tienda online',
-    desc: 'Dirección estratégica, pensada para que el comercio digital use el mismo catálogo, variantes y stock.',
-    status: 'Dirección estratégica',
-    tone: 'strategic',
-  },
-  {
-    title: 'Compras y fabricación',
-    desc: 'Abastecimiento, proveedores y producción para negocios que ensamblan, transforman o fabrican.',
-    status: 'Por capacidades',
-    tone: 'capacity',
-  },
+const navItems = [
+  { label: 'Producto', href: '#producto' },
+  { label: 'Operación', href: '#operacion' },
+  { label: 'Planes', href: '#planes' },
+  { label: 'Para quién', href: '#para-quien' },
+  { label: 'FAQ', href: '#faq' },
 ];
 
-const implementationPoints = [
-  {
-    title: 'Arranque rápido',
-    desc: 'Crea empresa, catálogo, sucursales y almacenes con una estructura mínima clara.',
-  },
-  {
-    title: 'Operación conectada',
-    desc: 'Cada venta y movimiento conserva stock, sucursal, almacén y salida operativa.',
-  },
-  {
-    title: 'Crecimiento modular',
-    desc: 'Activa más capacidades cuando tu operación pida compras, fabricación o comercio digital.',
-  },
+const heroChips = [
+  'Stock por sucursal',
+  'Ventas conectadas',
+  'Empaque validado',
+  'Conciliación de inventario',
 ];
+
+const problemCards = [
+  {
+    title: 'Stock descuadrado',
+    desc: 'El sistema dice una cosa y el conteo físico otra.',
+    icon: 'warning',
+  },
+  {
+    title: 'Pedidos mal empacados',
+    desc: 'Productos incompletos o equivocados salen sin control.',
+    icon: 'box',
+  },
+  {
+    title: 'Diferencias sin explicación',
+    desc: 'No sabes si viene de venta, salida, ajuste, traslado o empaque.',
+    icon: 'shield',
+  },
+] as const;
+
+const operationSteps = [
+  { title: 'Catálogo', desc: 'Productos, variantes y códigos.', icon: 'catalog' },
+  { title: 'Stock', desc: 'Existencias por sucursal o almacén.', icon: 'warehouse' },
+  { title: 'Venta', desc: 'Cada venta descuenta inventario.', icon: 'movement' },
+  { title: 'Organización', desc: 'Pedidos listos para preparar.', icon: 'layers' },
+  { title: 'Empaque', desc: 'Validación antes de entregar.', icon: 'box' },
+  { title: 'Conciliación', desc: 'Compara y explica diferencias.', icon: 'check' },
+] as const;
+
+const reconciliationRows = [
+  { product: 'Auriculares Bluetooth', system: '120', physical: '116', diff: '-4', status: 'Revisar', tone: 'danger' },
+  { product: 'Mouse Inalámbrico', system: '80', physical: '80', diff: '0', status: 'Cuadrado', tone: 'success' },
+  { product: 'Teclado Mecánico', system: '45', physical: '47', diff: '+2', status: 'Sobrante', tone: 'info' },
+  { product: 'Monitor 24”', system: '30', physical: '28', diff: '-2', status: 'Revisar', tone: 'danger' },
+  { product: 'Webcam HD', system: '15', physical: '15', diff: '0', status: 'Cuadrado', tone: 'success' },
+] as const;
+
+const reconciliationBenefits = [
+  { title: 'Conteos físicos por ubicación', icon: 'layers' },
+  { title: 'Historial de movimientos', icon: 'movement' },
+  { title: 'Ajustes controlados', icon: 'check' },
+  { title: 'Trazabilidad total', icon: 'shield' },
+] as const;
+
+const deviceBullets = [
+  {
+    title: 'Desktop',
+    desc: 'Reportes, configuración, catálogo, conciliaciones y más.',
+    icon: 'desktop',
+  },
+  {
+    title: 'Móvil',
+    desc: 'Conteos, ventas, organización de pedidos, empaque y salidas en segundos.',
+    icon: 'phone',
+  },
+] as const;
+
+const packingItems = [
+  { item: 'Playera Negra M', status: 'validado' },
+  { item: 'Gorra Azul', status: 'validado' },
+  { item: 'Tenis Blanco', status: 'validado' },
+  { item: 'Tenis Blanco 27', status: 'pendiente' },
+] as const;
+
+const plans = [
+  {
+    name: 'Base',
+    desc: 'Para negocios que quieren ordenar productos y stock.',
+    price: 'Desde $199 MXN / mes',
+    icon: 'catalog',
+    features: [
+      'Catálogo',
+      'Inventario',
+      'Stock por sucursal',
+      'Movimientos básicos',
+      'Acceso desde móvil',
+    ],
+  },
+  {
+    name: 'Operativo',
+    desc: 'Para negocios que venden y preparan pedidos.',
+    price: 'Desde $399 MXN / mes',
+    icon: 'movement',
+    features: [
+      'Todo lo de Base',
+      'Ventas y salidas',
+      'Organización de pedidos',
+      'Empaque validado',
+      'Historial de movimientos',
+      'Usuarios operativos',
+    ],
+  },
+  {
+    name: 'Multicanal',
+    desc: 'Para negocios con varias sucursales o canales.',
+    price: 'Desde $699 MXN / mes',
+    icon: 'store',
+    features: [
+      'Todo lo de Operativo',
+      'Múltiples ubicaciones',
+      'Canales de venta',
+      'Reglas por sucursal',
+      'Despachos',
+      'Reportes operativos',
+    ],
+  },
+  {
+    name: 'Completo',
+    badge: 'Incluido en la prueba gratis',
+    desc: 'Para operaciones que necesitan máximo control y trazabilidad.',
+    price: 'Desde $1,199 MXN / mes',
+    icon: 'shield',
+    highlighted: true,
+    features: [
+      'Todo lo de Multicanal',
+      'Conciliación avanzada',
+      'Conteos físicos',
+      'Ajustes controlados',
+      'Compras y fabricación',
+      'Alertas de diferencias',
+      'Auditoría operativa',
+    ],
+  },
+] as const;
+
+const audienceCards = [
+  {
+    title: 'Tiendas y retail',
+    desc: 'Control de stock, ventas y reposiciones.',
+    icon: 'store',
+  },
+  {
+    title: 'Marcas multicanal',
+    desc: 'Vende en varios canales sin perder visibilidad.',
+    icon: 'layers',
+  },
+  {
+    title: 'Almacenes y distribución',
+    desc: 'Múltiples ubicaciones, traslados y despachos.',
+    icon: 'truck',
+  },
+  {
+    title: 'Empaque y fulfillment',
+    desc: 'Organiza, valida y despacha sin errores.',
+    icon: 'box',
+  },
+] as const;
 
 const faqs = [
   {
-    q: '¿Qué es Nexuit?',
-    a: 'Nexuit es una suite SaaS para ordenar inventario, ventas físicas, POS, ventas online y operación en negocios con productos, sucursales y almacenes.',
+    q: '¿Qué plan incluye la prueba gratis?',
+    a: 'La prueba gratuita incluye el plan más completo de Nexuit durante 7 días.',
   },
   {
-    q: '¿El POS está disponible?',
-    a: 'Sí. POS se presenta como disponible para operación de mostrador, conectado al mismo inventario y contexto de stock.',
+    q: '¿Necesito tarjeta para empezar?',
+    a: 'No. Puedes probar el plan más completo por 7 días sin ingresar tarjeta.',
   },
   {
-    q: '¿La tienda online ya se publica automáticamente?',
-    a: 'No se comunica como publicación automática cerrada. Nexuit la presenta como dirección estratégica: comercio digital pensado para nacer del mismo catálogo y preparado para evolucionar sobre el stock operativo.',
+    q: '¿Qué pasa cuando termina la prueba?',
+    a: 'Puedes elegir uno de los 4 planes disponibles según las capacidades que necesite tu operación.',
   },
   {
-    q: '¿Tengo que activar todo desde el primer día?',
-    a: 'No. Nexuit se organiza por capacidades para que empieces con una base operativa clara y actives más módulos conforme tu negocio crece.',
+    q: '¿Puedo cambiar de plan después?',
+    a: 'Sí. Puedes iniciar con un plan y escalar cuando necesites más módulos, sucursales, conciliación o capacidades avanzadas.',
+  },
+  {
+    q: '¿Pierdo mi información si cambio de plan?',
+    a: 'No. Tu información operativa se conserva; el plan define las capacidades disponibles.',
   },
 ];
 ---
 
 <BaseLayout
-  title="Nexuit — Inventario, ventas y operación multicanal"
-  description="Suite SaaS para ordenar productos, sucursales, almacenes, POS, ventas online y despachos sobre el mismo inventario operativo."
+  title="Nexuit | Inventario, ventas, empaque y conciliación"
+  description="Controla stock, ventas, organización, empaque y conciliación de inventario desde una sola base. Prueba el plan más completo de Nexuit por 7 días, sin tarjeta."
   path="/"
 >
-  <LandingHeader registerUrl={registerUrl} loginUrl={loginUrl} />
-  <HeroSection
-    primaryCtaClass={primaryCtaClass}
-    secondaryCtaClass={secondaryCtaClass}
-    registerUrl={registerUrl}
+  <LandingHeader
+    navItems={navItems}
+    primaryCtaHref={primaryCtaHref}
+    primaryCtaLabel={PRIMARY_CTA_LABEL}
     loginUrl={loginUrl}
   />
-  <ValueSections
-    primaryCtaClass={primaryCtaClass}
-    secondaryCtaClass={secondaryCtaClass}
-    registerUrl={registerUrl}
-    loginUrl={loginUrl}
-    implementationPoints={implementationPoints}
-    moduleCards={moduleCards}
-  />
-  <section id="plan" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
-    <div class="rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_42%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="grid gap-8 md:grid-cols-[0.9fr_1.1fr] md:items-start">
-        <div>
-          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">
-            Planes y capacidades
-          </div>
-          <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-            Empieza con una base operativa clara
-          </h2>
-          <p class="mt-4 text-sm leading-7 text-[color:var(--muted)]">
-            Nexuit se activa por capacidades. Tu negocio puede empezar con inventario, catálogo,
-            POS y salidas, y crecer hacia más módulos cuando sea momento.
-          </p>
-          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a href={registerUrl} data-cta="pricing-create-company" class={primaryCtaClass}>
-              Crear empresa
-            </a>
-            <a href={loginUrl} data-cta="pricing-login" class={secondaryCtaClass}>
-              Iniciar sesión
-            </a>
-          </div>
-        </div>
-
-        <div class="glass-card rounded-[1.75rem] p-6">
-          <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan inicial</div>
-          <div class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)]">
-            Desde $199 MXN / mes
-          </div>
-          <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
-            Anual: $1,990 MXN / año.
-          </p>
-
-          <div class="mt-6 grid gap-3 sm:grid-cols-2">
-            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
-              Catálogo, variantes y SKUs.
-            </div>
-            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
-              Stock por sucursal, almacén y ubicación.
-            </div>
-            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
-              POS disponible sobre el mismo inventario.
-            </div>
-            <div class="rounded-[1.25rem] border border-[color:var(--line)] bg-white/80 p-4 text-sm leading-7 text-[color:var(--ink)]">
-              Salidas, empaque y despachos con contexto.
-            </div>
-          </div>
-
-          <p class="mt-5 text-sm leading-7 text-[color:var(--muted)]">
-            La tienda online se presenta como dirección estratégica del producto, preparada para
-            evolucionar sin prometer publicación automática cerrada dentro del plan.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <FaqSection
-    primaryCtaClass={primaryCtaClass}
-    secondaryCtaClass={secondaryCtaClass}
-    registerUrl={registerUrl}
-    loginUrl={loginUrl}
-    faqs={faqs}
-  />
-  <LandingFooter />
+  <main>
+    <HeroSection
+      chips={heroChips}
+      primaryCtaHref={primaryCtaHref}
+      primaryCtaLabel={PRIMARY_CTA_LABEL}
+      ctaMicrocopy={ctaMicrocopy}
+    />
+    <ValueSections
+      problemCards={problemCards}
+      operationSteps={operationSteps}
+      reconciliationRows={reconciliationRows}
+      reconciliationBenefits={reconciliationBenefits}
+      deviceBullets={deviceBullets}
+      packingItems={packingItems}
+      plans={plans}
+      audienceCards={audienceCards}
+      primaryCtaHref={primaryCtaHref}
+      primaryCtaLabel={PRIMARY_CTA_LABEL}
+      ctaMicrocopy={ctaMicrocopy}
+    />
+    <FaqSection
+      faqs={faqs}
+      primaryCtaHref={primaryCtaHref}
+      primaryCtaLabel={PRIMARY_CTA_LABEL}
+      ctaMicrocopy={ctaMicrocopy}
+    />
+  </main>
+  <LandingFooter navItems={navItems} />
 </BaseLayout>

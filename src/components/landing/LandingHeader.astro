@@ -1,48 +1,75 @@
 ---
 import BrandMark from './BrandMark.astro';
 
+interface NavItem {
+  label: string;
+  href: string;
+}
+
 interface Props {
-  registerUrl: string;
+  navItems: NavItem[];
+  primaryCtaHref: string;
+  primaryCtaLabel: string;
   loginUrl: string;
 }
 
-const { registerUrl, loginUrl } = Astro.props;
+const { navItems, primaryCtaHref, primaryCtaLabel, loginUrl } = Astro.props;
 ---
 
-<header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(244,248,255,0.72)] backdrop-blur-xl">
-  <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4">
-    <div class="flex items-center gap-3">
+<header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-white/90 backdrop-blur-xl">
+  <div class="mx-auto flex max-w-[1240px] items-center justify-between gap-4 px-4 py-3 md:px-6">
+    <a href="/" aria-label="Nexuit inicio" class="flex items-center gap-3">
       <BrandMark />
-      <div class="flex flex-col leading-none">
-        <span class="text-sm font-semibold tracking-[0.08em] text-[color:var(--ink)] uppercase">Nexuit</span>
-        <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">Suite operativa</span>
-      </div>
-    </div>
+      <span class="text-base font-bold tracking-[0.02em] text-[color:var(--ink)]">NEXUIT</span>
+    </a>
 
-    <nav class="hidden items-center gap-6 text-sm text-[color:var(--muted)] md:flex">
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#producto">Producto</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#operacion">Operación</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#modulos">Módulos</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#plan">Planes</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#para-quien">Para quién</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#faq">FAQ</a>
+    <nav class="hidden items-center gap-6 text-sm font-medium text-[color:var(--muted)] lg:flex" aria-label="Navegación principal">
+      {navItems.map((item) => (
+        <a class="transition-colors hover:text-[color:var(--ink)]" href={item.href}>{item.label}</a>
+      ))}
     </nav>
 
-    <div class="flex items-center gap-2">
+    <div class="hidden items-center gap-2 sm:flex">
       <a
         href={loginUrl}
         data-cta="header-login"
-        class="hidden rounded-2xl border border-[color:var(--line)] bg-white/80 px-4 py-2 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-white sm:inline-flex"
+        class="rounded-2xl border border-[color:var(--line)] bg-white px-4 py-2 text-sm font-semibold text-[color:var(--ink)] shadow-[0_8px_20px_rgba(7,27,58,0.04)] transition-colors hover:bg-[color:var(--page-bg-soft)]"
       >
         Iniciar sesión
       </a>
       <a
-        href={registerUrl}
-        data-cta="header-create-company"
-        class="rounded-2xl bg-[color:var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(37,99,235,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)]"
+        href={primaryCtaHref}
+        data-cta="header-trial"
+        class="rounded-2xl bg-[color:var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow-[0_14px_26px_rgba(11,92,255,0.24)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)]"
       >
-        Crear empresa
+        {primaryCtaLabel}
       </a>
+    </div>
+
+    <div class="flex items-center gap-2 sm:hidden">
+      <a
+        href={primaryCtaHref}
+        data-cta="header-mobile-trial"
+        class="rounded-2xl bg-[color:var(--brand)] px-3 py-2 text-xs font-bold text-white shadow-[0_12px_22px_rgba(11,92,255,0.22)]"
+      >
+        {primaryCtaLabel}
+      </a>
+      <details class="group relative">
+        <summary class="flex list-none items-center rounded-2xl border border-[color:var(--line)] bg-white px-3 py-2 text-sm font-semibold text-[color:var(--ink)] shadow-[0_10px_22px_rgba(7,27,58,0.06)] marker:hidden" aria-label="Abrir menú">
+          <span class="grid gap-1">
+            <span class="block h-0.5 w-4 rounded-full bg-[color:var(--ink)]"></span>
+            <span class="block h-0.5 w-4 rounded-full bg-[color:var(--ink)]"></span>
+          </span>
+        </summary>
+        <div class="absolute right-0 mt-3 w-[min(86vw,20rem)] rounded-[1.5rem] border border-[color:var(--line)] bg-white p-3 shadow-[0_22px_50px_rgba(7,27,58,0.16)]">
+          <nav class="grid gap-1 text-sm font-medium text-[color:var(--muted)]" aria-label="Navegación móvil">
+            {navItems.map((item) => (
+              <a class="rounded-2xl px-3 py-2 transition-colors hover:bg-[color:var(--page-bg-soft)] hover:text-[color:var(--ink)]" href={item.href}>{item.label}</a>
+            ))}
+            <a class="rounded-2xl px-3 py-2 transition-colors hover:bg-[color:var(--page-bg-soft)] hover:text-[color:var(--ink)]" href={loginUrl}>Iniciar sesión</a>
+          </nav>
+        </div>
+      </details>
     </div>
   </div>
 </header>

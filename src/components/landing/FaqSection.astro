@@ -1,56 +1,60 @@
 ---
+import IconGlyph from './IconGlyph.astro';
+
 interface FaqItem {
   q: string;
   a: string;
 }
 
 interface Props {
-  primaryCtaClass: string;
-  secondaryCtaClass: string;
-  registerUrl: string;
-  loginUrl: string;
   faqs: FaqItem[];
+  primaryCtaHref: string;
+  primaryCtaLabel: string;
+  ctaMicrocopy: string;
 }
 
-const { primaryCtaClass, secondaryCtaClass, registerUrl, loginUrl, faqs } = Astro.props;
+const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
 ---
 
-<section id="faq" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
-  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Plan y operación</div>
-  <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-    Preguntas antes de empezar
-  </h2>
-
-  <div class="mt-8 grid gap-4 md:grid-cols-2">
+<section id="faq" class="mx-auto max-w-[1240px] scroll-mt-28 px-4 py-14 md:px-6 md:py-18">
+  <div class="text-xs font-black uppercase tracking-[0.22em] text-[color:var(--brand)]">Preguntas frecuentes</div>
+  <div class="mt-8 grid gap-4 lg:grid-cols-5">
     {faqs.map((faq) => (
-      <details class="glass-card rounded-[1.75rem] p-6">
-        <summary class="cursor-pointer text-sm font-semibold text-[color:var(--ink)]">{faq.q}</summary>
-        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">{faq.a}</p>
+      <details class="group rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_14px_30px_rgba(7,27,58,0.06)]">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-3 text-sm font-black text-[color:var(--ink)] marker:hidden">
+          <span>{faq.q}</span>
+          <span class="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-[color:var(--page-bg-soft)] text-[color:var(--brand)] transition-transform group-open:rotate-45">+</span>
+        </summary>
+        <p class="mt-4 text-sm leading-7 text-[color:var(--muted)]">{faq.a}</p>
       </details>
     ))}
   </div>
 
-  <div class="mt-10 rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_38%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-    <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Cierre</div>
-    <h3 class="mt-3 max-w-xl text-3xl font-semibold tracking-tight text-[color:var(--ink)]">
-      Crea tu empresa y empieza con una estructura operativa clara.
-    </h3>
-    <p class="mt-4 max-w-2xl text-sm leading-7 text-[color:var(--muted)]">
-      Ordena productos, sucursales, almacenes, POS, ventas y salidas desde el mismo inventario operativo.
-    </p>
-    <div class="mt-5 flex flex-wrap gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">
-      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Multi-sucursal</span>
-      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">POS disponible</span>
-      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Despachos conectados</span>
-      <span class="rounded-full border border-[color:var(--line)] bg-white/80 px-3 py-1">Capacidades modulares</span>
-    </div>
-    <div class="mt-5 flex flex-col gap-3 sm:flex-row">
-      <a href={registerUrl} data-cta="footer-create-company" class={primaryCtaClass}>
-        Crear empresa
-      </a>
-      <a href={loginUrl} data-cta="footer-login" class={secondaryCtaClass}>
-        Iniciar sesión
-      </a>
+  <div class="mt-10 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_10%_10%,rgba(56,189,248,0.16),transparent_34%),linear-gradient(135deg,#071B3A,#0B1224)] p-6 text-white shadow-[0_28px_70px_rgba(7,27,58,0.22)] md:p-8">
+    <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
+      <div class="flex gap-5">
+        <div class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.95)] shadow-[0_20px_42px_rgba(11,92,255,0.28)] sm:flex">
+          <IconGlyph name="gift" class="h-7 w-7" />
+        </div>
+        <div>
+          <h2 class="text-2xl font-black tracking-[-0.035em] md:text-4xl">
+            Empieza con Nexuit completo por 7 días.
+          </h2>
+          <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300 md:text-base">
+            Controla stock, ventas, empaque y conciliación sin tarjeta. Después elige el plan que necesita tu operación.
+          </p>
+        </div>
+      </div>
+      <div>
+        <a
+          href={primaryCtaHref}
+          data-cta="final-trial"
+          class="inline-flex w-full justify-center rounded-2xl bg-white px-8 py-4 text-sm font-black text-[color:var(--brand)] shadow-[0_18px_40px_rgba(255,255,255,0.12)] transition-transform duration-200 hover:-translate-y-0.5 md:w-auto"
+        >
+          {primaryCtaLabel}
+        </a>
+        <div class="mt-3 text-center text-xs font-medium text-slate-300">{ctaMicrocopy}</div>
+      </div>
     </div>
   </div>
 </section>

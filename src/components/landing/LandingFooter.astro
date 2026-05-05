@@ -1,18 +1,39 @@
 ---
-const registerUrl = 'https://app.nexuit.com/register';
-const loginUrl = 'https://app.nexuit.com/login';
+import BrandMark from './BrandMark.astro';
+
+interface NavItem {
+  label: string;
+  href: string;
+}
+
+interface Props {
+  navItems: NavItem[];
+}
+
+const { navItems } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-[color:var(--line)]">
-  <div class="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-sm text-[color:var(--muted)] md:flex-row md:items-center md:justify-between">
-    <div>© Nexuit. Suite SaaS para inventario, ventas y operación multicanal.</div>
-    <div class="flex flex-wrap gap-4">
-      <a class="transition-colors hover:text-[color:var(--ink)]" href={registerUrl}>Crear empresa</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href={loginUrl}>Iniciar sesión</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="mailto:hola@nexuit.app">Soporte</a>
-      <span class="text-slate-300">|</span>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="/privacidad">Privacidad</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="/terminos">Términos</a>
+<footer class="border-t border-[color:var(--line)] bg-white/80">
+  <div class="mx-auto grid max-w-[1240px] gap-8 px-4 py-8 text-sm text-[color:var(--muted)] md:grid-cols-[1fr_auto] md:items-center md:px-6">
+    <div class="flex items-start gap-3">
+      <BrandMark />
+      <div>
+        <div class="font-black tracking-[0.03em] text-[color:var(--ink)]">NEXUIT</div>
+        <p class="mt-1">Tu operación conectada. Tu mercancía bajo control.</p>
+      </div>
     </div>
+
+    <div class="flex flex-wrap gap-x-5 gap-y-3 md:justify-end">
+      {navItems.map((item) => (
+        <a class="transition-colors hover:text-[color:var(--ink)]" href={item.href}>{item.label}</a>
+      ))}
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="/terminos">Términos</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="/privacidad">Privacidad</a>
+    </div>
+  </div>
+  <div class="mx-auto flex max-w-[1240px] flex-col gap-3 border-t border-[color:var(--line)] px-4 py-5 text-xs text-[color:var(--muted)] md:flex-row md:items-center md:justify-between md:px-6">
+    <span>© {year} Nexuit. Todos los derechos reservados.</span>
+    <span>Inventario, ventas, empaque y conciliación en una sola base.</span>
   </div>
 </footer>

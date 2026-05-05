@@ -8,11 +8,12 @@ const secondaryCtaClass =
 
 const registerUrl = 'https://app.nexuit.com/register';
 const loginUrl = 'https://app.nexuit.com/login';
+const primaryCtaLabel = 'Probar 7 días gratis';
 ---
 
 <BaseLayout
-  title="Nexuit — Crear empresa"
-  description="Crea tu empresa en Nexuit y empieza a ordenar inventario, sucursales, almacenes, POS, ventas y salidas desde una misma suite SaaS."
+  title="Nexuit — Prueba gratis"
+  description="Prueba el plan más completo de Nexuit por 7 días, sin tarjeta. Controla stock, ventas, empaque y conciliación desde una misma base."
   path="/signup"
 >
   <section class="mx-auto max-w-6xl px-4 pb-16 pt-12 md:pt-20">
@@ -21,16 +22,16 @@ const loginUrl = 'https://app.nexuit.com/login';
         <div class="inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.9)] px-4 py-1.5 text-[11px] tracking-[0.18em] text-[color:var(--muted)] uppercase shadow-[0_8px_22px_rgba(148,163,184,0.12)]">
           <span class="font-semibold text-[color:var(--brand)]">Nexuit</span>
           <span class="text-[color:var(--accent)]">•</span>
-          <span>Registro de empresa</span>
+          <span>Prueba gratis</span>
         </div>
 
         <h1 class="mt-5 max-w-2xl text-5xl font-semibold leading-[0.92] tracking-tight text-[color:var(--ink)] md:text-7xl">
-          Crea tu empresa y empieza con una estructura operativa clara
+          Prueba Nexuit completo por 7 días
         </h1>
 
         <p class="mt-5 max-w-xl text-base leading-8 text-[color:var(--muted)] md:text-lg">
-          El registro ocurre dentro de la aplicación de Nexuit. Desde ahí puedes configurar tu
-          empresa, productos, sucursales, almacenes y capacidades según tu operación.
+          Entra al flujo de activación y usa el plan más completo sin tarjeta. Al terminar,
+          eliges el plan que mejor se adapte a tu operación.
         </p>
 
         <div class="mt-6 flex flex-wrap gap-2">
@@ -43,7 +44,7 @@ const loginUrl = 'https://app.nexuit.com/login';
         <div class="mt-8 grid gap-4 md:grid-cols-3">
           <div class="glass-card rounded-[1.75rem] p-5">
             <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--brand)]">Paso 1</div>
-            <div class="mt-3 text-sm font-semibold text-[color:var(--ink)]">Crea empresa</div>
+            <div class="mt-3 text-sm font-semibold text-[color:var(--ink)]">Activa la prueba</div>
             <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">
               Entra al registro público de la aplicación.
             </p>
@@ -68,16 +69,16 @@ const loginUrl = 'https://app.nexuit.com/login';
       <div class="rounded-[2rem] border border-[rgba(255,255,255,0.1)] bg-[linear-gradient(135deg,#eff6ff_0%,#ffffff_38%,#eef2ff_100%)] p-8 shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
         <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Continuar a la aplicación</div>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-          Registro y acceso en Nexuit SaaS
+          Prueba y acceso en Nexuit SaaS
         </h2>
         <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">
-          Usa el registro de empresa para comenzar. Si ya tienes acceso a un tenant, inicia sesión
-          desde la ruta pública de la aplicación.
+          Usa la prueba gratis para comenzar. Si ya tienes acceso a un tenant, inicia sesión desde
+          la ruta pública de la aplicación.
         </p>
 
         <div class="mt-6 flex flex-col gap-3 sm:flex-row">
           <a href={registerUrl} class={primaryCtaClass}>
-            Crear empresa
+            {primaryCtaLabel}
           </a>
           <a href={loginUrl} class={secondaryCtaClass}>
             Iniciar sesión
@@ -86,7 +87,7 @@ const loginUrl = 'https://app.nexuit.com/login';
 
         <div class="mt-6 grid gap-3">
           <div class="glass-card rounded-[1.25rem] p-4 text-sm leading-7 text-[color:var(--ink)]">
-            Planes y capacidades se gestionan dentro del flujo de activación del SaaS.
+            Prueba el plan más completo por 7 días, sin tarjeta.
           </div>
           <div class="glass-card rounded-[1.25rem] p-4 text-sm leading-7 text-[color:var(--ink)]">
             La tienda online se presenta como dirección estratégica del producto, no como publicación automática cerrada.

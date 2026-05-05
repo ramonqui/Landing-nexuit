@@ -4,11 +4,11 @@
   <rect x="72" y="72" width="1056" height="486" rx="28" fill="#111111" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.08"/>
   <rect x="112" y="116" width="158" height="46" rx="23" fill="#171717" stroke="#FFFFFF" stroke-opacity="0.08"/>
   <text x="138" y="145" fill="#F5F5F5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEXUIT</text>
-  <text x="112" y="214" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Ordena inventario,</text>
-  <text x="112" y="278" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">ventas y despachos</text>
-  <text x="112" y="342" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">en una suite multicanal.</text>
-  <text x="112" y="420" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400">POS, tienda online, sucursales y almacenes</text>
-  <text x="112" y="458" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400">sobre el mismo inventario operativo.</text>
+  <text x="112" y="214" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">Controla stock,</text>
+  <text x="112" y="278" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">ventas y empaque</text>
+  <text x="112" y="342" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="54" font-weight="700">sin perder mercancía.</text>
+  <text x="112" y="420" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400">Inventario en tiempo real, empaque validado</text>
+  <text x="112" y="458" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="400">y conciliación en una sola base.</text>
   <rect x="112" y="488" width="262" height="64" rx="18" fill="#FAFAFA"/>
   <text x="151" y="528" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">nexuit.app</text>
   <rect x="860" y="132" width="210" height="270" rx="28" fill="#141414" stroke="#FFFFFF" stroke-opacity="0.08"/>
