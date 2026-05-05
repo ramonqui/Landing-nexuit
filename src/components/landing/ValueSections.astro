@@ -6,146 +6,221 @@ interface Item {
   desc: string;
 }
 
-interface Props {
-  primaryCtaClass: string;
-  implementationPoints: Item[];
-  upcomingModules: Item[];
+interface ModuleItem extends Item {
+  status: string;
+  tone: 'available' | 'strategic' | 'capacity';
 }
 
-const { primaryCtaClass, implementationPoints, upcomingModules } = Astro.props;
+interface Props {
+  primaryCtaClass: string;
+  secondaryCtaClass: string;
+  registerUrl: string;
+  loginUrl: string;
+  implementationPoints: Item[];
+  moduleCards: ModuleItem[];
+}
+
+const {
+  primaryCtaClass,
+  secondaryCtaClass,
+  registerUrl,
+  loginUrl,
+  implementationPoints,
+  moduleCards,
+} = Astro.props;
+
+const statusClass = {
+  available: 'bg-[rgba(37,99,235,0.1)] text-[color:var(--brand)]',
+  strategic: 'bg-[rgba(6,182,212,0.1)] text-[color:var(--accent)]',
+  capacity: 'bg-[rgba(15,23,42,0.06)] text-[color:var(--muted)]',
+} as const;
 ---
 
 <section id="producto" class="section-band scroll-mt-28 border-y">
   <div class="mx-auto max-w-6xl px-4 py-14">
     <div class="grid gap-10 md:grid-cols-2">
       <div>
-        <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Problema raíz</div>
+        <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Problema operativo</div>
         <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-          Si tu inventario no está bien, todo se rompe
+          Cuando el inventario crece, también crecen las dudas
         </h2>
         <p class="mt-4 text-[color:var(--muted)] leading-8">
-          Excel sirve… hasta que creces. Variantes, almacenes, ventas y producción empiezan a desalinearse
-          y pierdes dinero sin darte cuenta.
+          Dónde está cada producto, cuánto queda, qué se vendió en tienda, qué se pidió online,
+          qué falta empacar y qué ya salió. Nexuit existe para que esas respuestas vivan en un
+          mismo sistema operativo.
         </p>
       </div>
       <ul class="space-y-3 text-sm text-[color:var(--ink)]">
-        <li class="glass-card-strong rounded-3xl px-4 py-3">“Tengo stock pero no lo encuentro”</li>
-        <li class="glass-card-strong rounded-3xl px-4 py-3">“Me faltan tallas/colores y no sé por qué”</li>
-        <li class="glass-card-strong rounded-3xl px-4 py-3">“Mi inventario no cuadra con lo que vendí”</li>
-        <li class="glass-card-strong rounded-3xl px-4 py-3">“Cada canal maneja su propio catálogo”</li>
+        <li class="glass-card-strong rounded-3xl px-4 py-3">Stock disperso entre sucursales, bodegas y ubicaciones.</li>
+        <li class="glass-card-strong rounded-3xl px-4 py-3">Ventas físicas y online que no siempre actualizan la misma base.</li>
+        <li class="glass-card-strong rounded-3xl px-4 py-3">Productos con variantes, SKUs y reglas difíciles de controlar.</li>
+        <li class="glass-card-strong rounded-3xl px-4 py-3">Despachos, empaque y salidas operando fuera del contexto de venta.</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="mx-auto max-w-6xl px-4 py-14">
-  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Sistema base</div>
+<section id="operacion" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
+  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Sistema operativo del negocio</div>
   <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-    Nexuit lo ordena como sistema
+    Cada módulo comparte el mismo contexto
   </h2>
   <p class="mt-4 max-w-2xl leading-relaxed text-[color:var(--muted)]">
-    Estructura simple, escalable y auditada:
-    <span class="font-semibold text-[color:var(--ink)]">Producto → Variantes → Ubicaciones → Movimientos</span>.
+    Productos, sucursales, almacenes, canales de venta y movimientos se conectan para que el
+    negocio no dependa de listas duplicadas ni herramientas aisladas.
   </p>
 
-  <div class="mt-8 grid gap-4 md:grid-cols-2">
+  <div class="mt-8 grid gap-4 md:grid-cols-3">
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
       <div class="mb-4 text-[color:var(--brand)]">
         <IconGlyph name="catalog" />
       </div>
-      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Catálogo con variantes reales</h3>
-      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Tallas, colores, SKUs, costos, precios y peso por variante.</p>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Catálogo</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Productos, variantes, SKUs y clasificación comercial listos para operar.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
       <div class="mb-4 text-[color:var(--brand)]">
         <IconGlyph name="warehouse" />
       </div>
-      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Inventario por almacén/ubicación</h3>
-      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Control por sucursal, bodega o ubicación.</p>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Inventario</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Stock visible por sucursal, almacén y ubicación interna.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
       <div class="mb-4 text-[color:var(--brand)]">
         <IconGlyph name="movement" />
       </div>
-      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Movimientos auditables</h3>
-      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Entradas, salidas, ajustes y transferencias con historial claro.</p>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Ventas y POS</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Ventas de mostrador sin perder contexto de stock, sucursal y salida.</p>
     </div>
     <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
       <div class="mb-4 text-[color:var(--brand)]">
-        <IconGlyph name="tenant" />
+        <IconGlyph name="layers" />
       </div>
-      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Multi-negocio (multi-tenant)</h3>
-      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Un usuario, varios negocios. Todo separado y ordenado.</p>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Tienda online</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Comercio digital pensado para usar el mismo catálogo, variantes y stock operativo.</p>
     </div>
-  </div>
-</section>
-
-<section class="mx-auto max-w-6xl px-4 py-14">
-  <div class="glass-card rounded-[2rem] p-8">
-    <h2 class="text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-      Si hoy usas Excel o WooCommerce con plugins...
-    </h2>
-    <div class="mt-8 grid gap-4 md:grid-cols-2">
-      <div class="glass-card-strong rounded-[1.75rem] px-4 py-3 text-sm text-[color:var(--ink)]">
-        Tu inventario no está alineado con la realidad.
+    <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="check" />
       </div>
-      <div class="glass-card-strong rounded-[1.75rem] px-4 py-3 text-sm text-[color:var(--ink)]">
-        Puedes vender lo que no tienes.
-      </div>
-      <div class="glass-card-strong rounded-[1.75rem] px-4 py-3 text-sm text-[color:var(--ink)]">
-        Empacan productos equivocados.
-      </div>
-      <div class="glass-card-strong rounded-[1.75rem] px-4 py-3 text-sm text-[color:var(--ink)]">
-        No sabes qué almacén tiene qué.
-      </div>
-      <div class="glass-card-strong rounded-[1.75rem] px-4 py-3 text-sm text-[color:var(--ink)] md:col-span-2">
-        Pagas herramientas que no se hablan entre sí.
-      </div>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Despachos</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Picking, packing y envío conectados a cada venta.</p>
     </div>
-    <p class="mt-6 text-sm leading-7 text-[color:var(--muted)]">
-      Nexuit une inventario, POS y control físico en un solo sistema.
-    </p>
+    <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
+      <div class="mb-4 text-[color:var(--brand)]">
+        <IconGlyph name="setup" />
+      </div>
+      <h3 class="text-sm font-semibold uppercase tracking-[0.14em] text-[color:var(--ink)]">Compras y fabricación</h3>
+      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Abastecimiento, proveedores y producción conectados al inventario cuando tu operación lo necesita.</p>
+    </div>
   </div>
 </section>
 
 <section id="como-funciona" class="section-band scroll-mt-28 border-y">
   <div class="mx-auto max-w-6xl px-4 py-14">
-    <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Activación</div>
+    <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Inventario como punto de partida</div>
     <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-      Empieza en horas, no en semanas
+      Primero ordena la base. Después conecta la operación.
     </h2>
+    <p class="mt-4 max-w-2xl leading-relaxed text-[color:var(--muted)]">
+      Crea productos, variantes y SKUs. Ubica stock por sucursal, almacén y ubicación interna.
+      Desde ahí nacen POS, ventas online, salidas, compras y fabricación.
+    </p>
 
     <div class="mt-8 grid gap-4 md:grid-cols-3">
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
         <div class="mb-4 text-[color:var(--brand)]">
-          <IconGlyph name="setup" />
+          <IconGlyph name="catalog" />
         </div>
-        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 1</div>
-        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Crea tu catálogo</div>
-        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Productos + variantes con SKUs.</p>
+        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Base</div>
+        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Catálogo operativo</div>
+        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Productos, variantes, códigos y datos comerciales en una estructura clara.</p>
       </div>
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
         <div class="mb-4 text-[color:var(--brand)]">
-          <IconGlyph name="layers" />
+          <IconGlyph name="warehouse" />
         </div>
-        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 2</div>
-        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Define almacenes</div>
-        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Ubicaciones, sucursales o bodegas.</p>
+        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Stock</div>
+        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Sucursales y almacenes</div>
+        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Existencias por bodega, tienda, ubicación interna y movimientos auditables.</p>
       </div>
       <div class="glass-card-strong rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
         <div class="mb-4 text-[color:var(--brand)]">
-          <IconGlyph name="check" />
+          <IconGlyph name="movement" />
         </div>
-        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Paso 3</div>
-        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Controla stock real</div>
-        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Movimientos con historial auditable.</p>
+        <div class="text-xs font-semibold uppercase tracking-[0.18em] text-[color:var(--accent)]">Salida</div>
+        <div class="mt-2 text-lg font-semibold text-[color:var(--ink)]">Ventas con contexto</div>
+        <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Cada venta sabe de dónde saldrá el producto y qué falta para entregarlo.</p>
       </div>
     </div>
 
-    <div class="mt-8">
-      <a href="/signup" class={primaryCtaClass}>
-        Crear cuenta
+    <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <a href={registerUrl} data-cta="flow-create-company" class={primaryCtaClass}>
+        Crear empresa
       </a>
+      <a href={loginUrl} data-cta="flow-login" class={secondaryCtaClass}>
+        Iniciar sesión
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="mx-auto max-w-6xl px-4 py-14">
+  <div class="grid gap-8 md:grid-cols-[0.95fr_1.05fr] md:items-center">
+    <div>
+      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Venta física y online</div>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
+        Una sola verdad de stock para cada canal
+      </h2>
+      <p class="mt-4 leading-8 text-[color:var(--muted)]">
+        Vende en mostrador, prepara pedidos online y conserva una sola base operativa.
+        La tienda en línea debe nacer del mismo catálogo, no de una lista duplicada.
+      </p>
+    </div>
+    <div class="grid gap-4">
+      <div class="glass-card rounded-[1.75rem] p-6">
+        <div class="text-sm font-semibold text-[color:var(--ink)]">POS disponible</div>
+        <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">Punto de venta para operación diaria sin perder contexto de stock.</p>
+      </div>
+      <div class="glass-card rounded-[1.75rem] p-6">
+        <div class="text-sm font-semibold text-[color:var(--ink)]">Tienda online como dirección estratégica</div>
+        <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">Pensada para que tu comercio digital use el mismo catálogo, variantes y stock operativo.</p>
+      </div>
+      <div class="glass-card rounded-[1.75rem] p-6">
+        <div class="text-sm font-semibold text-[color:var(--ink)]">Despachos conectados</div>
+        <p class="mt-2 text-sm leading-7 text-[color:var(--muted)]">Convierte ventas físicas u online en picking, packing y salida sin perder contexto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-band border-y">
+  <div class="mx-auto grid max-w-6xl gap-8 px-4 py-14 md:grid-cols-[1fr_1fr] md:items-center">
+    <div>
+      <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Desktop y mobile-first</div>
+      <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
+        Supervisa desde escritorio. Opera rápido desde móvil.
+      </h2>
+      <p class="mt-4 leading-8 text-[color:var(--muted)]">
+        Nexuit separa las experiencias para que cada pantalla tenga sentido: escritorio para
+        revisar la operación completa y navegador móvil para acciones rápidas en tienda o bodega.
+      </p>
+    </div>
+    <div class="glass-card rounded-[2rem] p-6">
+      <div class="grid gap-3 sm:grid-cols-3">
+        <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 p-4">
+          <div class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--brand)]">Desktop</div>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Supervisión, módulos y visibilidad general.</p>
+        </div>
+        <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 p-4">
+          <div class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--brand)]">Móvil web</div>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Operación rápida desde navegador.</p>
+        </div>
+        <div class="rounded-[1.5rem] border border-[color:var(--line)] bg-white/80 p-4">
+          <div class="text-xs font-semibold uppercase tracking-[0.16em] text-[color:var(--brand)]">App nativa</div>
+          <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">En evolución para escaneo y bodega.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -153,13 +228,13 @@ const { primaryCtaClass, implementationPoints, upcomingModules } = Astro.props;
 <section class="mx-auto max-w-6xl px-4 py-14">
   <div class="rounded-[2rem] border border-[rgba(255,255,255,0.08)] bg-[linear-gradient(135deg,#0f172a_0%,#172554_55%,#0f3a5b_100%)] px-6 py-8 text-white shadow-[0_24px_60px_rgba(15,23,42,0.22)] md:px-8 md:py-10">
     <div class="max-w-2xl">
-      <div class="text-xs font-medium uppercase tracking-[0.22em] text-sky-300">Implementación</div>
+      <div class="text-xs font-medium uppercase tracking-[0.22em] text-sky-300">Crecimiento modular</div>
       <h2 class="mt-3 text-3xl font-semibold tracking-tight md:text-4xl">
-        Lo que resuelves desde el primer día
+        Empieza simple y activa más capacidades cuando tu negocio lo pida
       </h2>
       <p class="mt-4 text-sm leading-7 text-slate-300 md:text-base">
-        Nexuit no intenta reemplazar toda tu operación de golpe. Primero fija el núcleo que más
-        duele: inventario y catálogo. Después escalas sobre una base que ya está limpia.
+        Nexuit no obliga a usar todo desde el día uno. Primero ordena la base operativa y después
+        conecta POS, despachos, compras, fabricación o comercio digital según tu etapa.
       </p>
     </div>
 
@@ -175,36 +250,24 @@ const { primaryCtaClass, implementationPoints, upcomingModules } = Astro.props;
 </section>
 
 <section id="modulos" class="mx-auto max-w-6xl scroll-mt-28 px-4 py-14">
-  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Expansión</div>
+  <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--brand)]">Módulos y capacidades</div>
   <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">
-    Modular por diseño
+    La operación crece sobre el mismo núcleo
   </h2>
   <p class="mt-4 max-w-2xl leading-relaxed text-[color:var(--muted)]">
-    Activa solo lo que necesitas hoy. El resto se construye encima del mismo núcleo.
+    Catálogo e inventario sostienen ventas, POS, despachos y las capacidades que cada negocio
+    activa conforme crece.
   </p>
 
   <div class="mt-8 grid gap-4 md:grid-cols-3">
-    <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-      <div class="mb-4 flex items-start justify-between">
-        <div class="text-[color:var(--brand)]">
-          <IconGlyph name="available" />
-        </div>
-        <div class="inline-flex rounded-full bg-[rgba(37,99,235,0.1)] px-3 py-1 text-xs font-medium text-[color:var(--brand)]">
-          Disponible
-        </div>
-      </div>
-      <div class="mt-3 text-lg font-semibold text-[color:var(--ink)]">Inventario + Productos</div>
-      <p class="mt-2 text-sm leading-relaxed text-[color:var(--muted)]">Catálogo con variantes, almacenes y movimientos.</p>
-    </div>
-
-    {upcomingModules.map((module) => (
+    {moduleCards.map((module) => (
       <div class="glass-card rounded-[1.75rem] p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_22px_50px_rgba(15,23,42,0.1)]">
-        <div class="mb-4 flex items-start justify-between">
+        <div class="mb-4 flex items-start justify-between gap-3">
           <div class="text-[color:var(--brand)]">
-            <IconGlyph name="launch" />
+            <IconGlyph name={module.tone === 'available' ? 'available' : 'launch'} />
           </div>
-          <div class="inline-flex rounded-full bg-[rgba(6,182,212,0.1)] px-3 py-1 text-xs font-medium text-[color:var(--accent)]">
-            Próximamente
+          <div class={`inline-flex rounded-full px-3 py-1 text-xs font-medium ${statusClass[module.tone]}`}>
+            {module.status}
           </div>
         </div>
         <div class="mt-3 text-lg font-semibold text-[color:var(--ink)]">{module.title}</div>
@@ -214,29 +277,30 @@ const { primaryCtaClass, implementationPoints, upcomingModules } = Astro.props;
   </div>
 
   <p class="mt-8 text-sm font-medium text-[color:var(--muted)]">
-    Nota: primero clavamos inventario y catálogo. Eso evita rehacer todo después.
+    La tienda online se comunica como dirección estratégica del producto: comercio digital basado
+    en el mismo catálogo e inventario, no publicación automática cerrada.
   </p>
 </section>
 
 <section id="para-quien" class="section-band scroll-mt-28 border-y">
   <div class="mx-auto max-w-6xl px-4 py-14">
     <div class="text-xs font-semibold uppercase tracking-[0.2em] text-[color:var(--accent)]">Para quién es Nexuit</div>
-    <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">Hecho para operar de verdad</h2>
+    <h2 class="mt-3 text-3xl font-semibold tracking-tight text-[color:var(--ink)] md:text-4xl">Hecho para operaciones con productos reales</h2>
 
     <div class="mt-8 grid gap-4 md:grid-cols-3">
       <div class="glass-card-strong rounded-[1.75rem] p-6">
-        <div class="text-sm font-semibold text-[color:var(--ink)]">Fabricantes</div>
-        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Producción propia y control físico real.</p>
+        <div class="text-sm font-semibold text-[color:var(--ink)]">Tiendas con inventario físico</div>
+        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Stock, sucursales, almacenes y ventas de mostrador bajo control.</p>
       </div>
 
       <div class="glass-card-strong rounded-[1.75rem] p-6">
-        <div class="text-sm font-semibold text-[color:var(--ink)]">Vendedores con inventario físico</div>
-        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Tienda local + ecommerce sin desorden.</p>
+        <div class="text-sm font-semibold text-[color:var(--ink)]">Marcas multicanal</div>
+        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Tienda física, POS, ventas online y despachos hablando con el mismo inventario.</p>
       </div>
 
       <div class="glass-card-strong rounded-[1.75rem] p-6">
-        <div class="text-sm font-semibold text-[color:var(--ink)]">Operaciones mixtas</div>
-        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Fabrican y venden en múltiples canales.</p>
+        <div class="text-sm font-semibold text-[color:var(--ink)]">Fabricantes y operaciones mixtas</div>
+        <p class="mt-3 text-sm leading-7 text-[color:var(--muted)]">Negocios que ensamblan, compran, producen o venden desde varias ubicaciones.</p>
       </div>
     </div>
   </div>
