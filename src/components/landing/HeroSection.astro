@@ -9,25 +9,25 @@ interface Props {
 const { primaryCtaClass, secondaryCtaClass, registerUrl, loginUrl } = Astro.props;
 ---
 
-<section class="mx-auto max-w-6xl px-4 pb-16 pt-12 md:pt-20">
-  <div class="grid items-center gap-12 md:grid-cols-2">
+<section class="mx-auto max-w-6xl px-4 pb-12 pt-10 md:pb-16 md:pt-20">
+  <div class="grid items-center gap-10 md:grid-cols-2 md:gap-12">
     <div>
-      <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.9)] px-4 py-1.5 text-[11px] tracking-[0.18em] text-[color:var(--muted)] uppercase shadow-[0_8px_22px_rgba(148,163,184,0.12)]">
+      <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.9)] px-4 py-1.5 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted)] shadow-[0_8px_22px_rgba(148,163,184,0.12)] md:mb-5">
         <span class="font-semibold text-[color:var(--brand)]">Nexuit</span>
         <span class="text-[color:var(--accent)]">•</span>
         <span>Suite operativa SaaS</span>
       </div>
 
-      <h1 class="max-w-xl text-5xl font-semibold leading-[0.92] tracking-tight text-[color:var(--ink)] md:text-7xl">
-        Ordena inventario, ventas físicas, tienda online y despachos en una sola suite SaaS
+      <h1 class="max-w-2xl text-[2.65rem] font-semibold leading-[0.96] tracking-tight text-[color:var(--ink)] sm:text-5xl md:text-6xl">
+        Ordena inventario, ventas y despachos en una suite multicanal.
       </h1>
 
-      <p class="mt-5 max-w-xl text-base leading-8 text-[color:var(--muted)] md:text-lg">
-        Nexuit conecta productos, sucursales, almacenes, POS, ventas online y salidas
-        para que tu negocio opere con claridad desde el primer día.
+      <p class="mt-4 max-w-xl text-[15px] leading-7 text-[color:var(--muted)] sm:text-base md:mt-5 md:text-lg md:leading-8">
+        Nexuit conecta productos, sucursales, almacenes, POS, ventas físicas, tienda online y salidas
+        para que cada canal opere sobre el mismo inventario.
       </p>
 
-      <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+      <div class="mt-5 flex flex-col gap-3 sm:flex-row md:mt-6">
         <a href={registerUrl} data-cta="hero-create-company" class={primaryCtaClass}>
           Crear empresa
         </a>
@@ -37,25 +37,25 @@ const { primaryCtaClass, secondaryCtaClass, registerUrl, loginUrl } = Astro.prop
         </a>
       </div>
 
-      <div class="mt-6 flex flex-wrap gap-2">
+      <div class="mt-5 flex flex-wrap gap-2 md:mt-6">
         <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Multi-sucursal</span>
         <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Multi-almacén</span>
         <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">POS disponible</span>
-        <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Comercio digital en evolución</span>
+        <span class="rounded-full border border-[color:var(--line)] bg-[rgba(255,255,255,0.74)] px-3 py-1 text-xs text-[color:var(--muted)]">Tienda online en evolución</span>
       </div>
 
-      <div class="mt-8 grid max-w-lg grid-cols-3 gap-3">
-        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-4 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)]">
-          <div class="text-lg font-semibold text-[color:var(--ink)]">1 base</div>
-          <div class="mt-1 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted)]">stock y ventas</div>
+      <div class="mt-6 grid max-w-lg grid-cols-3 gap-2 sm:gap-3 md:mt-8">
+        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-3 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)] sm:px-4">
+          <div class="text-base font-semibold text-[color:var(--ink)] sm:text-lg">1 base</div>
+          <div class="mt-1 text-[10px] uppercase tracking-[0.16em] text-[color:var(--muted)] sm:text-[11px] sm:tracking-[0.18em]">stock y ventas</div>
         </div>
-        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-4 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)]">
-          <div class="text-lg font-semibold text-[color:var(--ink)]">POS</div>
-          <div class="mt-1 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted)]">sin perder stock</div>
+        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-3 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)] sm:px-4">
+          <div class="text-base font-semibold text-[color:var(--ink)] sm:text-lg">POS</div>
+          <div class="mt-1 text-[10px] uppercase tracking-[0.16em] text-[color:var(--muted)] sm:text-[11px] sm:tracking-[0.18em]">sin perder stock</div>
         </div>
-        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-4 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)]">
-          <div class="text-lg font-semibold text-[color:var(--ink)]">Salidas</div>
-          <div class="mt-1 text-[11px] uppercase tracking-[0.18em] text-[color:var(--muted)]">con contexto</div>
+        <div class="rounded-3xl border border-[color:var(--line)] bg-white/80 px-3 py-3 shadow-[0_12px_28px_rgba(148,163,184,0.08)] sm:px-4">
+          <div class="text-base font-semibold text-[color:var(--ink)] sm:text-lg">Salidas</div>
+          <div class="mt-1 text-[10px] uppercase tracking-[0.16em] text-[color:var(--muted)] sm:text-[11px] sm:tracking-[0.18em]">con contexto</div>
         </div>
       </div>
     </div>
