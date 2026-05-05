@@ -3,23 +3,19 @@
   <rect x="48" y="48" width="1104" height="534" rx="32" fill="url(#paint0_linear_1_2)"/>
   <rect x="72" y="72" width="1056" height="486" rx="28" fill="#111111" fill-opacity="0.9" stroke="#FFFFFF" stroke-opacity="0.08"/>
   <rect x="112" y="116" width="158" height="46" rx="23" fill="#171717" stroke="#FFFFFF" stroke-opacity="0.08"/>
-  <text x="138" y="145" fill="#F5F5F5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEXUIT CORE</text>
-  <text x="112" y="242" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700">
-    <tspan x="112" dy="0">Inventario + POS</tspan>
-    <tspan x="112" dy="76">desde $199 MXN</tspan>
-  </text>
-  <text x="112" y="378" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">
-    <tspan x="112" dy="0">Controla inventario físico, variantes, almacenes</tspan>
-    <tspan x="112" dy="40">y ventas en una sola base.</tspan>
-  </text>
+  <text x="138" y="145" fill="#F5F5F5" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">NEXUIT</text>
+  <text x="112" y="222" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">Inventario, ventas</text>
+  <text x="112" y="288" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700">y operación multicanal</text>
+  <text x="112" y="382" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">Conecta productos, sucursales, almacenes, POS,</text>
+  <text x="112" y="422" fill="#CFCFCF" font-family="Arial, Helvetica, sans-serif" font-size="28" font-weight="400">ventas online y despachos en una suite SaaS.</text>
   <rect x="112" y="454" width="262" height="64" rx="18" fill="#FAFAFA"/>
   <text x="151" y="494" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">nexuit.app</text>
-  <rect x="738" y="140" width="320" height="320" rx="28" fill="#141414" stroke="#FFFFFF" stroke-opacity="0.08"/>
-  <rect x="774" y="182" width="248" height="56" rx="16" fill="#1F1F1F"/>
-  <rect x="774" y="262" width="114" height="122" rx="20" fill="#FAFAFA"/>
-  <rect x="908" y="262" width="114" height="56" rx="20" fill="#262626"/>
-  <rect x="908" y="328" width="114" height="56" rx="20" fill="#262626"/>
-  <rect x="774" y="404" width="248" height="24" rx="12" fill="#262626"/>
+  <rect x="860" y="132" width="210" height="270" rx="28" fill="#141414" stroke="#FFFFFF" stroke-opacity="0.08"/>
+  <rect x="890" y="170" width="150" height="42" rx="14" fill="#1F1F1F"/>
+  <rect x="890" y="238" width="70" height="96" rx="18" fill="#FAFAFA"/>
+  <rect x="980" y="238" width="60" height="42" rx="18" fill="#262626"/>
+  <rect x="980" y="292" width="60" height="42" rx="18" fill="#262626"/>
+  <rect x="890" y="356" width="150" height="20" rx="10" fill="#262626"/>
   <defs>
     <linearGradient id="paint0_linear_1_2" x1="90" y1="80" x2="1112" y2="550" gradientUnits="userSpaceOnUse">
       <stop stop-color="#171717"/>
