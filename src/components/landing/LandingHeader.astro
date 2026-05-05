@@ -1,9 +1,12 @@
 ---
 import BrandMark from './BrandMark.astro';
 
-interface Props {}
+interface Props {
+  registerUrl: string;
+  loginUrl: string;
+}
 
-Astro.props satisfies Props;
+const { registerUrl, loginUrl } = Astro.props;
 ---
 
 <header class="sticky top-0 z-50 border-b border-[color:var(--line)] bg-[rgba(244,248,255,0.72)] backdrop-blur-xl">
@@ -12,25 +15,33 @@ Astro.props satisfies Props;
       <BrandMark />
       <div class="flex flex-col leading-none">
         <span class="text-sm font-semibold tracking-[0.08em] text-[color:var(--ink)] uppercase">Nexuit</span>
-        <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">Core Platform</span>
+        <span class="mt-1 text-[10px] font-medium uppercase tracking-[0.18em] text-[color:var(--muted)]">Suite operativa</span>
       </div>
     </div>
 
     <nav class="hidden items-center gap-6 text-sm text-[color:var(--muted)] md:flex">
       <a class="transition-colors hover:text-[color:var(--ink)]" href="#producto">Producto</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#operacion">Operación</a>
       <a class="transition-colors hover:text-[color:var(--ink)]" href="#modulos">Módulos</a>
-      <a class="transition-colors hover:text-[color:var(--ink)]" href="#plan">Plan</a>
+      <a class="transition-colors hover:text-[color:var(--ink)]" href="#plan">Planes</a>
       <a class="transition-colors hover:text-[color:var(--ink)]" href="#para-quien">Para quién</a>
       <a class="transition-colors hover:text-[color:var(--ink)]" href="#faq">FAQ</a>
     </nav>
 
     <div class="flex items-center gap-2">
       <a
-        href="/signup"
-        data-cta="header-create-account"
+        href={loginUrl}
+        data-cta="header-login"
+        class="hidden rounded-2xl border border-[color:var(--line)] bg-white/80 px-4 py-2 text-sm font-semibold text-[color:var(--ink)] transition-colors hover:bg-white sm:inline-flex"
+      >
+        Iniciar sesión
+      </a>
+      <a
+        href={registerUrl}
+        data-cta="header-create-company"
         class="rounded-2xl bg-[color:var(--brand)] px-4 py-2 text-sm font-semibold text-white shadow-[0_12px_24px_rgba(37,99,235,0.2)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)]"
       >
-        Crear cuenta
+        Crear empresa
       </a>
     </div>
   </div>
