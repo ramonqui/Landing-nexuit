@@ -370,8 +370,8 @@ El repo del SaaS expone estas rutas publicas:
 
 La landing debe enviar clientes a:
 
-- CTA principal: `https://app.nexuit.com/register` o dominio equivalente del SaaS
-- CTA secundario: `https://app.nexuit.com/login`
+- CTA principal: `https://app.nexuit.app/register` o dominio equivalente del SaaS
+- CTA secundario: `https://app.nexuit.app/login`
 
 No exponer `/platform/login` en la landing comercial normal.
 Ese acceso es para el equipo Nexuit/SaaS Owner y debe mantenerse separado.
