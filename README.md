@@ -37,5 +37,5 @@ Pasos:
 ## Acceso anticipado
 
 - `PUBLIC_EARLY_ACCESS_ENDPOINT` habilita el envío. En una publicación autorizada usar `https://api.nexuit.app/public/early-access`. Sin esta variable el formulario muestra que aún no está disponible. Para probar en local usar un endpoint local o simulado.
-- `PUBLIC_EARLY_ACCESS_PRIVACY_URL` debe apuntar al aviso aprobado. El marcador provisional en el código es `/privacidad#aviso-provisional`.
-- `PUBLIC_EARLY_ACCESS_PRIVACY_VERSION` debe coincidir con `EARLY_ACCESS_PRIVACY_VERSION` del API. El valor `provisional-early-access-v1` es para pruebas. El API de producción exige una versión definitiva.
+- `PUBLIC_EARLY_ACCESS_PRIVACY_URL` usa `https://nexuit.app/privacidad` para producción. En local usa `/privacidad` de forma predeterminada.
+- `PUBLIC_EARLY_ACCESS_PRIVACY_VERSION=1.0` debe coincidir exactamente con `EARLY_ACCESS_PRIVACY_VERSION=1.0` del API. La landing usa `1.0` de forma predeterminada.
