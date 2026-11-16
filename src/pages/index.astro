@@ -12,7 +12,7 @@ const PRIMARY_CTA_HREF = '#acceso-anticipado';
 const ctaMicrocopy = 'Déjanos tus datos y te avisaremos cuando abramos el acceso.';
 
 const heroChips = [
-  'Stock por sucursal',
+  'Inventario por sucursal',
   'Ventas conectadas',
   'Empaque validado',
   'Conciliación de inventario',
@@ -46,11 +46,11 @@ const operationSteps = [
 ] as const;
 
 const reconciliationRows = [
-  { product: 'Playera negra', system: '120', physical: '116', diff: '-4', status: 'Revisar', tone: 'danger' },
-  { product: 'Gorra bordada', system: '80', physical: '80', diff: '0', status: 'Cuadrado', tone: 'success' },
+  { product: 'Café molido 500 g', system: '120', physical: '116', diff: '-4', status: 'Revisar', tone: 'danger' },
+  { product: 'Jabón neutro', system: '80', physical: '80', diff: '0', status: 'Cuadrado', tone: 'success' },
   { product: 'Banco de madera', system: '45', physical: '47', diff: '+2', status: 'Sobrante', tone: 'info' },
-  { product: 'Camisa de trabajo', system: '30', physical: '28', diff: '-2', status: 'Revisar', tone: 'danger' },
-  { product: 'Repisa de pino', system: '15', physical: '15', diff: '0', status: 'Cuadrado', tone: 'success' },
+  { product: 'Playera estampada', system: '30', physical: '28', diff: '-2', status: 'Revisar', tone: 'danger' },
+  { product: 'Mochila urbana', system: '15', physical: '15', diff: '0', status: 'Cuadrado', tone: 'success' },
 ] as const;
 
 const reconciliationBenefits = [
@@ -74,29 +74,29 @@ const deviceBullets = [
 ] as const;
 
 const packingItems = [
-  { item: 'Playera Negra M', status: 'validado' },
-  { item: 'Gorra Azul', status: 'validado' },
-  { item: 'Tenis Blanco', status: 'validado' },
-  { item: 'Mandil de lona', status: 'pendiente' },
+  { item: 'Café molido 500 g', status: 'validado' },
+  { item: 'Playera estampada M', status: 'validado' },
+  { item: 'Mochila urbana', status: 'validado' },
+  { item: 'Repisa de pino', status: 'pendiente' },
 ] as const;
 
 const audienceCards = [
-  { title: 'Talleres textiles', desc: 'Controla playeras, uniformes y gorras por talla, color y modelo.', icon: 'layers' },
-  { title: 'Carpinterías y mueblerías', desc: 'Organiza las piezas terminadas y los pedidos pendientes de entrega.', icon: 'box' },
-  { title: 'Talleres de personalización', desc: 'Prepara y revisa pedidos de bordado, estampado o grabado antes de enviarlos.', icon: 'store' },
-  { title: 'Pequeños fabricantes', desc: 'Consulta existencias por ubicación y concilia el conteo físico con tus movimientos.', icon: 'truck' },
+  { title: 'Tiendas y comercios', desc: 'Lleva el stock de productos de uso diario y encuentra diferencias entre sucursales.', icon: 'store' },
+  { title: 'Marcas con inventario', desc: 'Organiza tus variantes por talla, color o modelo y consulta existencias antes de vender.', icon: 'layers' },
+  { title: 'Distribuidores', desc: 'Consulta qué hay en cada almacén y prepara los pedidos pendientes de entrega.', icon: 'truck' },
+  { title: 'Talleres y fabricantes', desc: 'Controla materiales y productos terminados, desde playeras estampadas hasta muebles.', icon: 'box' },
 ] as const;
 
 const faqs = [
   { q: '¿Qué pasa cuando solicito acceso anticipado?', a: 'Tu solicitud queda en la lista. Te contactaremos para informarte cuándo puedes acceder a Nexuit.' },
   { q: '¿Necesito proporcionar mi WhatsApp?', a: 'Es opcional. Puedes dejar tu correo como medio de contacto.' },
-  { q: '¿Para qué tipo de negocio es Nexuit?', a: 'Está pensado para talleres y pequeños fabricantes que necesitan organizar su inventario, sus ventas y la preparación de pedidos.' },
+  { q: '¿Para qué tipo de negocio es Nexuit?', a: 'Nexuit está pensado para tiendas, comercios, marcas, distribuidores, talleres y fabricantes que manejan inventario.' },
 ];
 ---
 
 <BaseLayout
-  title="Nexuit | Acceso anticipado para talleres y pequeños fabricantes"
-  description="Solicita acceso anticipado a Nexuit para organizar el inventario, las ventas y el empaque de tu taller o pequeña fábrica."
+  title="Nexuit | Inventario, ventas y fabricación · Acceso anticipado"
+  description="Solicita acceso anticipado a Nexuit. Controla inventario, ventas y fabricación desde una sola base, ya sea que vendas productos o los fabriques."
   path="/"
 >
   <LandingHeader />

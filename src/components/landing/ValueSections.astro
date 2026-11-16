@@ -234,13 +234,13 @@ const statusClasses = {
                 <div class="hidden shrink-0 rounded-xl bg-[color:var(--brand)] px-3 py-2 text-xs font-bold text-white lg:block">Nuevo conteo</div>
               </div>
               <div class="grid gap-2 text-xs">
-                {['Playera negra', 'Gorra bordada', 'Banco de madera', 'Camisa de trabajo'].map((item, index) => (
+                {reconciliationRows.slice(0, 4).map((row) => (
                   <div class="grid grid-cols-[minmax(0,1fr)_2rem_2rem_2.5rem] rounded-xl border border-[color:var(--line)] bg-white px-2 py-3 sm:grid-cols-[1fr_3rem_3rem_4rem] sm:px-3">
-                    <span class="truncate font-semibold text-[color:var(--ink)]">{item}</span>
-                    <span>{[120, 80, 45, 30][index]}</span>
-                    <span>{[116, 80, 47, 28][index]}</span>
-                    <span class={index === 1 ? 'font-bold text-[color:var(--success)]' : 'font-bold text-[color:var(--danger)]'}>
-                      {['-4', '0', '+2', '-2'][index]}
+                    <span class="truncate font-semibold text-[color:var(--ink)]">{row.product}</span>
+                    <span>{row.system}</span>
+                    <span>{row.physical}</span>
+                    <span class={row.tone === 'success' ? 'font-bold text-[color:var(--success)]' : row.tone === 'info' ? 'font-bold text-[color:var(--brand-strong)]' : 'font-bold text-[color:var(--danger)]'}>
+                      {row.diff}
                     </span>
                   </div>
                 ))}
@@ -286,7 +286,7 @@ const statusClasses = {
   <div class="mx-auto max-w-3xl text-center">
     <div class="text-xs font-black uppercase tracking-[0.22em] text-[color:var(--brand)]">Hecho para operaciones reales</div>
     <h2 class="mt-3 text-3xl font-bold tracking-[-0.03em] text-[color:var(--ink)] md:text-5xl">
-      Para talleres y pequeños fabricantes.
+      Para negocios que venden o fabrican productos.
     </h2>
   </div>
   <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
