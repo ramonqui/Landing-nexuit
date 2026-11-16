@@ -1,4 +1,5 @@
 ---
+import EarlyAccessForm from '../components/landing/EarlyAccessForm.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqSection from '../components/landing/FaqSection.astro';
 import HeroSection from '../components/landing/HeroSection.astro';
@@ -6,10 +7,11 @@ import LandingFooter from '../components/landing/LandingFooter.astro';
 import LandingHeader from '../components/landing/LandingHeader.astro';
 import ValueSections from '../components/landing/ValueSections.astro';
 
-const PRIMARY_CTA_LABEL = 'Probar 7 días gratis';
-const TRIAL_CTA_HREF = 'https://app.nexuit.app/register';
+const PRIMARY_CTA_LABEL = 'Solicitar acceso anticipado';
+const PRIMARY_CTA_HREF = '#acceso-anticipado';
+const registerUrl = 'https://app.nexuit.app/register';
 const loginUrl = 'https://app.nexuit.app/login';
-const ctaMicrocopy = 'Plan completo incluido · Sin tarjeta · Luego eliges tu plan';
+const ctaMicrocopy = 'Déjanos tus datos y te avisaremos cuando abramos el acceso.';
 
 const navItems = [
   { label: 'Producto', href: '#producto' },
@@ -200,17 +202,19 @@ const faqs = [
 >
   <LandingHeader
     navItems={navItems}
-    primaryCtaHref={TRIAL_CTA_HREF}
+    primaryCtaHref={PRIMARY_CTA_HREF}
     primaryCtaLabel={PRIMARY_CTA_LABEL}
     loginUrl={loginUrl}
   />
   <main>
     <HeroSection
       chips={heroChips}
-      primaryCtaHref={TRIAL_CTA_HREF}
+      primaryCtaHref={PRIMARY_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
+      registerUrl={registerUrl}
     />
+    <EarlyAccessForm />
     <ValueSections
       problemCards={problemCards}
       operationSteps={operationSteps}
@@ -220,13 +224,13 @@ const faqs = [
       packingItems={packingItems}
       plans={plans}
       audienceCards={audienceCards}
-      primaryCtaHref={TRIAL_CTA_HREF}
+      primaryCtaHref={PRIMARY_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
     />
     <FaqSection
       faqs={faqs}
-      primaryCtaHref={TRIAL_CTA_HREF}
+      primaryCtaHref={PRIMARY_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
     />

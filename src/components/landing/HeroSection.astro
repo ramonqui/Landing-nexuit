@@ -6,9 +6,10 @@ interface Props {
   primaryCtaHref: string;
   primaryCtaLabel: string;
   ctaMicrocopy: string;
+  registerUrl: string;
 }
 
-const { chips, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
+const { chips, primaryCtaHref, primaryCtaLabel, ctaMicrocopy, registerUrl } = Astro.props;
 
 const stats = [
   { label: 'Stock disponible', value: '1,240', note: 'productos', tone: 'text-[color:var(--ink)]', alert: false },
@@ -28,16 +29,11 @@ const reconciliation = [
   <div class="grid items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-12">
     <div class="max-w-[41rem]">
       <div class="inline-flex rounded-full border border-[color:var(--line)] bg-white px-4 py-2 text-[11px] font-bold uppercase tracking-[0.14em] text-[color:var(--brand)] shadow-[0_10px_24px_rgba(7,27,58,0.05)]">
-        TODO TU INVENTARIO. EN UNA SOLA BASE.
+        ACCESO ANTICIPADO
       </div>
 
       <h1 class="mt-6 max-w-[40rem] text-[2.55rem] font-bold leading-[1] tracking-[-0.035em] text-[color:var(--ink)] sm:text-5xl lg:max-w-none lg:text-[3.35rem] xl:text-[3.5rem]">
-        <span class="lg:hidden">Controla stock, ventas y empaque sin perder mercancía.</span>
-        <span class="hidden lg:block">
-          <span class="block whitespace-nowrap">Controla stock, ventas</span>
-          <span class="block whitespace-nowrap">y empaque sin perder</span>
-          <span class="block whitespace-nowrap">mercancía.</span>
-        </span>
+        Estamos construyendo algo grande para talleres y pequeños fabricantes
       </h1>
 
       <p class="mt-5 max-w-lg text-[16px] leading-7 text-[color:var(--muted)] md:text-lg md:leading-8">
@@ -47,12 +43,13 @@ const reconciliation = [
       <div class="mt-7 flex flex-col gap-3 sm:items-start">
         <a
           href={primaryCtaHref}
-          data-cta="hero-trial"
+          data-cta="hero-early-access"
           class="inline-flex w-full items-center justify-center rounded-2xl bg-[color:var(--brand)] px-7 py-3.5 text-base font-bold text-white shadow-[0_18px_34px_rgba(11,92,255,0.22)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--brand-strong)] sm:w-auto"
         >
           {primaryCtaLabel}
         </a>
         <p class="text-sm font-semibold text-[color:var(--ink)] opacity-80">{ctaMicrocopy}</p>
+        <a href={registerUrl} class="text-sm font-semibold text-[color:var(--brand)] underline underline-offset-4">Crear cuenta</a>
       </div>
 
       <div class="mt-7 flex flex-wrap gap-2.5">
