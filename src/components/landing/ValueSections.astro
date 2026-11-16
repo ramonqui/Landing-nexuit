@@ -63,7 +63,7 @@ const {
 const statusClasses = {
   danger: 'bg-red-50 text-red-700',
   success: 'bg-emerald-50 text-emerald-700',
-  info: 'bg-blue-50 text-blue-700',
+  info: 'bg-[color:var(--accent)] text-[color:var(--brand-strong)]',
 } as const;
 ---
 
@@ -119,7 +119,7 @@ const statusClasses = {
 
 <section class="section-band border-y">
   <div class="mx-auto grid max-w-[1240px] gap-10 px-4 py-14 md:px-6 md:py-18 lg:grid-cols-[1.08fr_0.92fr] lg:items-center">
-    <div class="glass-card-strong overflow-hidden rounded-[2rem] shadow-[0_26px_58px_color-mix(in_srgb,var(--navy)_10%,transparent)]">
+    <div class="glass-card-strong overflow-hidden rounded-[2rem] shadow-[0_26px_58px_color-mix(in_srgb,var(--ink)_10%,transparent)]">
       <div class="flex flex-wrap items-center justify-between gap-3 border-b border-[color:var(--line)] px-5 py-4 md:px-6">
         <div class="text-sm font-black text-[color:var(--ink)]">Conciliación de inventario</div>
         <div class="rounded-xl border border-[color:var(--line)] bg-white px-3 py-1.5 text-xs font-bold text-[color:var(--muted)]">Almacén Norte</div>
@@ -178,7 +178,7 @@ const statusClasses = {
       </p>
       <div class="mt-8 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
         {reconciliationBenefits.map((benefit) => (
-          <div class="rounded-2xl border border-[color:var(--line)] bg-white p-4 shadow-[0_14px_28px_color-mix(in_srgb,var(--navy)_6%,transparent)]">
+          <div class="rounded-2xl border border-[color:var(--line)] bg-white p-4 shadow-[0_14px_28px_color-mix(in_srgb,var(--ink)_6%,transparent)]">
             <div class="mb-3 flex h-11 w-11 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--brand)_8%,transparent)] text-[color:var(--brand)]">
               <IconGlyph name={benefit.icon} />
             </div>
@@ -203,7 +203,7 @@ const statusClasses = {
       <div class="mt-8 grid gap-5">
         {deviceBullets.map((bullet) => (
           <div class="flex gap-4">
-            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white text-[color:var(--brand)] shadow-[0_12px_26px_color-mix(in_srgb,var(--navy)_6%,transparent)]">
+            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-[color:var(--line)] bg-white text-[color:var(--brand)] shadow-[0_12px_26px_color-mix(in_srgb,var(--ink)_6%,transparent)]">
               <IconGlyph name={bullet.icon} />
             </div>
             <div>
@@ -217,7 +217,7 @@ const statusClasses = {
 
     <div class="grid min-w-0 items-center gap-8 md:grid-cols-[minmax(0,1fr)_15rem] lg:gap-12">
       <div class="min-w-0 w-full">
-        <div class="rounded-t-[1.6rem] border-[8px] border-[color:var(--navy)] bg-white shadow-[0_24px_56px_color-mix(in_srgb,var(--navy)_14%,transparent)] sm:border-[10px]">
+        <div class="rounded-t-[1.6rem] border-[8px] border-[color:var(--ink)] bg-white shadow-[0_24px_56px_color-mix(in_srgb,var(--ink)_14%,transparent)] sm:border-[10px]">
           <div class="grid min-h-[19rem] grid-cols-[minmax(0,1fr)] overflow-hidden rounded-t-xl bg-white lg:grid-cols-[7rem_minmax(0,1fr)]">
             <div class="hidden bg-[color:var(--page-bg-soft)] p-4 text-xs text-[color:var(--muted)] lg:block">
               <div class="mb-4 h-2 w-14 rounded-full bg-[color:var(--brand)]"></div>
@@ -248,10 +248,10 @@ const statusClasses = {
             </div>
           </div>
         </div>
-        <div class="mx-auto h-4 max-w-[80%] rounded-b-[2rem] bg-[color:var(--navy)] shadow-[0_14px_28px_color-mix(in_srgb,var(--navy)_14%,transparent)]"></div>
+        <div class="mx-auto h-4 max-w-[80%] rounded-b-[2rem] bg-[color:var(--ink)] shadow-[0_14px_28px_color-mix(in_srgb,var(--ink)_14%,transparent)]"></div>
       </div>
 
-      <div class="mx-auto w-full max-w-[15rem] rounded-[2.2rem] border-[10px] border-[color:var(--navy)] bg-white p-4 shadow-[0_24px_58px_color-mix(in_srgb,var(--navy)_18%,transparent)]">
+      <div class="mx-auto w-full max-w-[15rem] rounded-[2.2rem] border-[10px] border-[color:var(--ink)] bg-white p-4 shadow-[0_24px_58px_color-mix(in_srgb,var(--ink)_18%,transparent)]">
         <div class="flex items-center justify-between">
           <div>
             <div class="text-xs font-bold uppercase tracking-[0.16em] text-[color:var(--brand)]">Empaque</div>
@@ -292,7 +292,7 @@ const statusClasses = {
   <div class="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
     {audienceCards.map((card) => (
       <article class="glass-card h-full rounded-[1.75rem] p-7">
-        <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[color:var(--brand)] shadow-[0_12px_26px_color-mix(in_srgb,var(--navy)_7%,transparent)]">
+        <div class="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[color:var(--brand)] shadow-[0_12px_26px_color-mix(in_srgb,var(--ink)_7%,transparent)]">
           <IconGlyph name={card.icon} />
         </div>
         <h3 class="font-black text-[color:var(--ink)]">{card.title}</h3>

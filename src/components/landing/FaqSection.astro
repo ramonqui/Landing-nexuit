@@ -30,7 +30,7 @@ const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
 
     <div class="grid gap-3">
       {faqs.map((faq) => (
-        <details class="group rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_14px_30px_color-mix(in_srgb,var(--navy)_5.5%,transparent)]">
+        <details class="group rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_14px_30px_color-mix(in_srgb,var(--ink)_5.5%,transparent)]">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black text-[color:var(--ink)] marker:hidden">
             <span>{faq.q}</span>
             <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--page-bg-soft)] text-[color:var(--brand)] transition-transform group-open:rotate-45">+</span>
@@ -41,7 +41,7 @@ const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
     </div>
   </div>
 
-  <div class="mt-12 overflow-hidden rounded-[2rem] bg-[color:var(--brand-strong)] p-6 text-white shadow-[0_26px_62px_color-mix(in_srgb,var(--navy)_20%,transparent)] md:p-10">
+  <div class="mt-12 overflow-hidden rounded-[2rem] bg-[color:var(--brand-strong)] p-6 text-white shadow-[0_26px_62px_color-mix(in_srgb,var(--ink)_20%,transparent)] md:p-10">
     <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
       <div class="flex gap-5">
         <div class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--brand)_95%,transparent)] shadow-[0_20px_42px_color-mix(in_srgb,var(--brand)_28%,transparent)] sm:flex">

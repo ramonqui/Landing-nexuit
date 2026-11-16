@@ -3,14 +3,16 @@
 
 :root {
   --page-bg: #FFFFFF;
-  --page-bg-soft: #F8FAFC;
-  --accent: #EFF6FF;
-  --ink: #0A0A0A;
-  --muted: #64748B;
-  --line: #E8EDF3;
-  --brand: #2563EB;
-  --brand-strong: #1D4ED8;
-  --navy: #0F172A;
+  --page-bg-soft: #F5F8F5;
+  --paper: #F1F5F5;
+  --accent: #E6F2ED;
+  --ink: #172522;
+  --muted: #52645A;
+  --muted-soft: #65736A;
+  --line: #DCE6DF;
+  --line-strong: #DCE4DE;
+  --brand: #0F766E;
+  --brand-strong: #115E59;
   --surface: rgba(255, 255, 255, 0.88);
   --surface-strong: rgba(255, 255, 255, 0.96);
   --danger: #DC2626;
@@ -38,7 +40,7 @@ body {
   min-height: 100vh;
   background:
     radial-gradient(ellipse at 76% 4%, var(--accent) 0, transparent 32rem),
-    linear-gradient(180deg, var(--page-bg) 0%, var(--page-bg-soft) 40%, var(--page-bg) 80%, var(--accent) 100%);
+    linear-gradient(180deg, var(--page-bg) 0%, var(--paper) 40%, var(--page-bg) 80%, var(--accent) 100%);
   color: var(--ink);
   font-family: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
   font-size: 1rem;
@@ -48,14 +50,14 @@ body {
 .glass-card {
   background: var(--surface);
   border: 1px solid var(--line);
-  box-shadow: 0 16px 36px color-mix(in srgb, var(--navy) 5.5%, transparent);
+  box-shadow: 0 16px 36px color-mix(in srgb, var(--ink) 5.5%, transparent);
   backdrop-filter: blur(12px);
 }
 
 .glass-card-strong {
   background: var(--surface-strong);
   border: 1px solid var(--line);
-  box-shadow: 0 20px 44px color-mix(in srgb, var(--navy) 7.5%, transparent);
+  box-shadow: 0 20px 44px color-mix(in srgb, var(--ink) 7.5%, transparent);
 }
 
 .section-band {
