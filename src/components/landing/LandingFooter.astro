@@ -1,16 +1,7 @@
 ---
 import BrandMark from './BrandMark.astro';
+import { navItems } from './navigation';
 
-interface NavItem {
-  label: string;
-  href: string;
-}
-
-interface Props {
-  navItems: NavItem[];
-}
-
-const { navItems } = Astro.props;
 const year = new Date().getFullYear();
 ---
 

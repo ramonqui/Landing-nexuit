@@ -30,7 +30,7 @@ const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
 
     <div class="grid gap-3">
       {faqs.map((faq) => (
-        <details class="group rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_14px_30px_rgba(7,27,58,0.055)]">
+        <details class="group rounded-[1.5rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_14px_30px_color-mix(in_srgb,var(--navy)_5.5%,transparent)]">
           <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-black text-[color:var(--ink)] marker:hidden">
             <span>{faq.q}</span>
             <span class="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[color:var(--page-bg-soft)] text-[color:var(--brand)] transition-transform group-open:rotate-45">+</span>
@@ -41,17 +41,17 @@ const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
     </div>
   </div>
 
-  <div class="mt-12 overflow-hidden rounded-[2rem] bg-[radial-gradient(circle_at_10%_10%,rgba(56,189,248,0.16),transparent_34%),linear-gradient(135deg,#071B3A,#0B1224)] p-6 text-white shadow-[0_26px_62px_rgba(7,27,58,0.2)] md:p-10">
+  <div class="mt-12 overflow-hidden rounded-[2rem] bg-[color:var(--brand-strong)] p-6 text-white shadow-[0_26px_62px_color-mix(in_srgb,var(--navy)_20%,transparent)] md:p-10">
     <div class="grid gap-6 md:grid-cols-[1fr_auto] md:items-center">
       <div class="flex gap-5">
-        <div class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[rgba(11,92,255,0.95)] shadow-[0_20px_42px_rgba(11,92,255,0.28)] sm:flex">
+        <div class="hidden h-16 w-16 shrink-0 items-center justify-center rounded-2xl bg-[color-mix(in_srgb,var(--brand)_95%,transparent)] shadow-[0_20px_42px_color-mix(in_srgb,var(--brand)_28%,transparent)] sm:flex">
           <IconGlyph name="gift" class="h-7 w-7" />
         </div>
         <div>
           <h2 class="text-2xl font-bold tracking-[-0.025em] md:text-4xl">
             ¿Quieres conocer Nexuit antes de la apertura?
           </h2>
-          <p class="mt-3 max-w-2xl text-sm leading-7 text-slate-300 md:text-base">
+          <p class="mt-3 max-w-2xl text-sm leading-7 text-white md:text-base">
             Cuéntanos qué tipo de negocio tienes y te avisaremos cuando puedas acceder.
           </p>
         </div>
@@ -64,7 +64,7 @@ const { faqs, primaryCtaHref, primaryCtaLabel, ctaMicrocopy } = Astro.props;
         >
           {primaryCtaLabel}
         </a>
-        <div class="mt-3 text-center text-xs font-medium text-slate-300">{ctaMicrocopy}</div>
+        <div class="mt-3 text-center text-xs font-medium text-white">{ctaMicrocopy}</div>
       </div>
     </div>
   </div>
