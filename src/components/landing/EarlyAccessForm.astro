@@ -1,0 +1,108 @@
+---
+const endpoint = import.meta.env.PUBLIC_EARLY_ACCESS_ENDPOINT || '';
+const privacyUrl = import.meta.env.PUBLIC_EARLY_ACCESS_PRIVACY_URL || '/privacidad';
+const privacyVersion = import.meta.env.PUBLIC_EARLY_ACCESS_PRIVACY_VERSION || '1.0';
+const inputClass = 'mt-1.5 w-full rounded-xl border border-[color:var(--line)] bg-white px-3 py-2.5 text-[color:var(--ink)] placeholder:text-[color:var(--muted)] focus-visible:outline-2 focus-visible:outline-[color:var(--brand)]';
+---
+
+<section id="acceso-anticipado" aria-labelledby="early-access-title" class="mx-auto max-w-3xl scroll-mt-24 px-4 pb-14 md:px-6 md:pb-20">
+  <div class="rounded-[2rem] border border-[color:var(--line)] bg-white p-5 shadow-[0_16px_48px_color-mix(in_srgb,var(--ink)_8%,transparent)] sm:p-8">
+    <h2 id="early-access-title" class="text-2xl font-bold tracking-tight text-[color:var(--ink)] sm:text-3xl">Solicita acceso anticipado</h2>
+    <form id="early-access-form" method="post" data-endpoint={endpoint} data-privacy-version={privacyVersion} class="mt-5 space-y-4">
+      <div class="grid gap-4 sm:grid-cols-2">
+        <label class="text-sm font-semibold">Nombre
+          <input class={inputClass} name="name" autocomplete="name" required maxlength="120" />
+        </label>
+        <label class="text-sm font-semibold">Correo
+          <input class={inputClass} name="email" type="email" autocomplete="email" required maxlength="254" />
+        </label>
+        <label class="text-sm font-semibold">Giro del negocio
+          <input class={inputClass} name="business_type" placeholder="Ej. Tienda, distribuidora o taller" required maxlength="120" />
+        </label>
+        <label class="text-sm font-semibold">WhatsApp <span class="font-normal text-[color:var(--muted-soft)]">(opcional)</span>
+          <input class={inputClass} name="whatsapp" type="tel" autocomplete="tel" maxlength="32" />
+        </label>
+      </div>
+      <div class="sr-only" aria-hidden="true">
+        <label>Sitio web <input name="website" tabindex="-1" autocomplete="off" maxlength="256" /></label>
+      </div>
+      <label class="flex items-start gap-2.5 text-sm">
+        <input class="mt-0.5 h-4 w-4 shrink-0 accent-[color:var(--brand)]" type="checkbox" name="privacy_accepted" required />
+        <span>Leí y acepto el <a href={privacyUrl} target="_blank" rel="noopener" class="font-semibold text-[color:var(--brand)] underline underline-offset-4">aviso de privacidad</a>.</span>
+      </label>
+      <p id="early-access-error" role="alert" hidden class="text-sm font-medium text-red-700"></p>
+      <button type="submit" disabled class="w-full rounded-2xl bg-[color:var(--brand)] px-6 py-3 text-sm font-bold text-white hover:bg-[color:var(--brand-strong)] disabled:opacity-60 sm:w-auto">Enviar solicitud</button>
+      <noscript><p class="text-sm">Activa JavaScript para enviar tu solicitud.</p></noscript>
+    </form>
+    <p id="early-access-success" role="status" tabindex="-1" hidden class="mt-5 rounded-xl bg-[color:var(--accent)] p-4 font-semibold text-[color:var(--ink)]">¡Gracias! Te escribiremos cuando abramos el acceso.</p>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#early-access-form')!;
+  const submit = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+  const error = document.querySelector<HTMLParagraphElement>('#early-access-error')!;
+  const success = document.querySelector<HTMLParagraphElement>('#early-access-success')!;
+  const { endpoint, privacyVersion } = form.dataset;
+
+  function showError(message: string) {
+    error.textContent = message;
+    error.hidden = false;
+  }
+
+  if (endpoint) submit.disabled = false;
+  else showError('El formulario aún no está disponible.');
+
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    if (!endpoint || submit.disabled) return;
+
+    const fields = new FormData(form);
+    const whatsapp = String(fields.get('whatsapp') || '').trim();
+    if (whatsapp && (!/^\+?[\d ()-]+$/.test(whatsapp) || !/^\d{7,15}$/.test(whatsapp.replace(/\D/g, '')))) {
+      showError('Revisa tu número de WhatsApp. Debe tener entre 7 y 15 dígitos.');
+      form.querySelector<HTMLInputElement>('[name="whatsapp"]')?.focus();
+      return;
+    }
+
+    error.hidden = true;
+    submit.disabled = true;
+    submit.textContent = 'Enviando…';
+
+    try {
+      const response = await fetch(endpoint, {
+        method: 'POST',
+        credentials: 'omit',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: String(fields.get('name') || '').trim(),
+          email: String(fields.get('email') || '').trim(),
+          business_type: String(fields.get('business_type') || '').trim(),
+          whatsapp,
+          privacy_accepted: fields.has('privacy_accepted'),
+          privacy_version: privacyVersion,
+          website: fields.get('website'),
+        }),
+      });
+      if (response.status === 202) {
+        form.reset();
+        form.hidden = true;
+        success.hidden = false;
+        success.focus();
+        return;
+      }
+      if (response.status === 429) showError('Demasiados intentos. Intenta de nuevo en 15 minutos.');
+      else if (response.status === 400) {
+        const body = await response.json().catch(() => ({}));
+        showError(body.error_code === 'EARLY_ACCESS_PRIVACY_VERSION_MISMATCH'
+          ? 'El aviso de privacidad cambió. Recarga la página y revísalo antes de enviar.'
+          : 'Revisa tu nombre, correo, giro y aceptación del aviso de privacidad.');
+      } else showError('No pudimos enviar tu solicitud. Intenta de nuevo.');
+    } catch {
+      showError('No pudimos enviar tu solicitud. Intenta de nuevo.');
+    } finally {
+      submit.disabled = false;
+      submit.textContent = 'Enviar solicitud';
+    }
+  });
+</script>

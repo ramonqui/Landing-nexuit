@@ -1,27 +1,88 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LandingHeader from '../components/landing/LandingHeader.astro';
+import LandingFooter from '../components/landing/LandingFooter.astro';
 ---
 
 <BaseLayout
-  title="Política de Privacidad | Nexuit"
-  description="Política de privacidad de Nexuit para el sitio de aterrizaje y formularios de contacto."
+  title="Aviso de privacidad integral | Nexuit"
+  description="Aviso de privacidad integral de Nexuit para el registro de acceso anticipado."
   path="/privacidad"
 >
-  <main class="mx-auto max-w-3xl px-4 py-16">
+  <LandingHeader />
+  <main class="privacy-notice mx-auto max-w-3xl px-4 py-16">
     <a class="text-sm text-neutral-500 hover:text-neutral-900" href="/">Volver al inicio</a>
-    <h1 class="mt-6 text-3xl font-semibold tracking-tight">Política de Privacidad</h1>
-    <p class="mt-6 text-sm leading-7 text-neutral-700">
-      Nexuit recopila la información mínima necesaria para responder solicitudes de contacto,
-      gestionar accesos y operar el servicio. No vendemos datos personales a terceros.
-    </p>
-    <p class="mt-4 text-sm leading-7 text-neutral-700">
-      Si utilizas formularios o canales de contacto asociados a Nexuit, tus datos pueden usarse
-      para soporte, seguimiento comercial y comunicaciones operativas relacionadas con la
-      plataforma.
-    </p>
-    <p class="mt-4 text-sm leading-7 text-neutral-700">
-      Para solicitudes sobre acceso, rectificación o eliminación de datos, escribe a
-      <a class="font-medium text-neutral-900" href="mailto:hola@nexuit.app"> hola@nexuit.app</a>.
-    </p>
+    <h1 class="mt-6 text-3xl font-semibold tracking-tight">AVISO DE PRIVACIDAD INTEGRAL — NEXUIT</h1>
+    <h2>Identidad y domicilio del responsable</h2>
+    <p>Mónica Quintana Colín, persona física, operando comercialmente bajo el nombre Nexuit, con domicilio para oír y recibir notificaciones en Dr. Jorge Jiménez Cantú S/N, San Lorenzo Cuauhtenco, Zinacantepec, Estado de México, C.P. 51355, México, y portal de internet https://nexuit.app, es la responsable del uso y protección de sus datos personales, y al respecto le informa lo siguiente:</p>
+    <h2>¿Para qué fines utilizaremos sus datos personales?</h2>
+    <p>Los datos personales que recabamos de usted a través de nuestro formulario de registro en nexuit.app, los utilizaremos para las siguientes finalidades que son necesarias para el servicio que solicita:</p>
+    <ul>
+      <li>Registrar su solicitud en la lista de acceso anticipado de la plataforma Nexuit.</li>
+      <li>Contactarle por correo electrónico o mensajería instantánea (WhatsApp, en caso de haberlo proporcionado) para otorgarle acceso anticipado, brindarle seguimiento e informarle sobre el lanzamiento oficial de la plataforma.</li>
+      <li>Mantener la seguridad operativa del sitio web, prevenir registros automatizados o abusivos (control de límite de envíos) y conservar evidencia técnica de su aceptación de este Aviso de Privacidad.</li>
+    </ul>
+    <p>De manera adicional, no utilizamos sus datos personales para finalidades secundarias distintas a las antes descritas, ni realizamos venta, renta o cesión de sus datos a terceros con fines comerciales o publicitarios.</p>
+    <h2>¿Qué datos personales utilizaremos para estos fines?</h2>
+    <p>Para llevar a cabo las finalidades descritas en el presente aviso de privacidad, utilizaremos los siguientes datos personales:</p>
+    <ul>
+      <li>Datos de identificación y contacto: Nombre completo, correo electrónico y número telefónico para WhatsApp (este último de carácter opcional).</li>
+      <li>Datos laborales o de negocio: Giro o actividad comercial de su taller, comercio o empresa.</li>
+      <li>Datos técnicos y de registro: Fecha y hora de envío de la solicitud, así como la versión del Aviso de Privacidad aceptada.</li>
+    </ul>
+    <p>Nota sobre la dirección IP: Su dirección IP se procesa únicamente de manera temporal en memoria para controlar el límite de envíos y proteger la integridad del formulario contra abuso; dicha dirección IP no se almacena junto con su solicitud ni se vincula a su perfil en nuestra base de datos.</p>
+    <p>Le informamos que no recabamos datos personales sensibles (tales como datos de salud, origen racial, creencias religiosas o datos financieros/bancarios) a través de este formulario.</p>
+    <h2>Proveedores tecnológicos (Encargados del tratamiento)</h2>
+    <p>Sus datos personales no son transferidos a terceros para fines propios de estos. Para la operación técnica de la plataforma y la prestación del servicio, utilizamos proveedores de infraestructura tecnológica que actúan en calidad de encargados bajo nuestras instrucciones y medidas de seguridad:</p>
+    <ul>
+      <li>Cloudflare: Alojamiento, distribución de contenido y seguridad perimetral del sitio web.</li>
+      <li>Railway: Infraestructura de servidores y almacenamiento en base de datos.</li>
+      <li>Brevo: Envío de correos electrónicos transaccionales y notificaciones relacionadas con su solicitud.</li>
+    </ul>
+    <h2>¿Por cuánto tiempo conservaremos sus datos?</h2>
+    <p>Conservaremos sus datos únicamente durante el tiempo necesario para las finalidades descritas, como máximo 12 meses posteriores al lanzamiento oficial de la plataforma o hasta que usted solicite su baja, lo que ocurra primero. Después, serán eliminados de forma segura.</p>
+    <h2>¿Cómo puede acceder, rectificar o cancelar sus datos personales, u oponerse a su uso (Derechos ARCO)?</h2>
+    <p>Usted tiene derecho a conocer qué datos personales tenemos de usted, para qué los utilizamos y las condiciones del uso que les damos (Acceso). Asimismo, es su derecho solicitar la corrección de su información personal en caso de que esté desactualizada, sea inexacta o incompleta (Rectificación); que la eliminemos de nuestros registros o bases de datos cuando considere que la misma no está siendo utilizada adecuadamente (Cancelación); así como oponerse al uso de sus datos personales para fines específicos (Oposición). Estos derechos se conocen como derechos ARCO.</p>
+    <p>Para el ejercicio de cualquiera de los derechos ARCO, o para revocar el consentimiento que nos haya otorgado, usted deberá enviar una solicitud al correo electrónico privacidad@nexuit.app indicando:</p>
+    <ol>
+      <li>Nombre completo del titular y correo electrónico registrado para comunicarle la respuesta.</li>
+      <li>Copia de una identificación oficial vigente que acredite su identidad.</li>
+      <li>Descripción clara y precisa de los datos personales respecto de los que busca ejercer alguno de los derechos ARCO.</li>
+    </ol>
+    <p>Daremos respuesta a su solicitud en un plazo máximo de 20 días hábiles contados desde la fecha en que se recibió, a través del mismo correo electrónico.</p>
+    <h2>Autoridad competente para quejas y denuncias</h2>
+    <p>Si usted considera que su derecho a la protección de sus datos personales ha sido lesionado por alguna conducta u omisión de nuestra parte, o presume alguna violación a las disposiciones previstas en la Ley Federal de Protección de Datos Personales en Posesión de los Particulares, podrá interponer su inconformidad o denuncia ante la Secretaría Anticorrupción y Buen Gobierno a través de su portal oficial https://www.gob.mx/buengobierno.</p>
+    <h2>Uso de tecnologías de rastreo en nuestro portal de internet</h2>
+    <p>Le informamos que en nuestra página de internet utilizamos mecanismos técnicos esenciales para el funcionamiento seguro del sitio y la prevención de abuso en los formularios (control de límite de peticiones), los cuales no recaban información para perfiles publicitarios ni rastreo comercial.</p>
+    <h2>¿Cómo puede conocer los cambios en este aviso de privacidad?</h2>
+    <p>El presente aviso de privacidad puede sufrir modificaciones, cambios o actualizaciones derivadas de nuevos requerimientos legales, de la evolución de la plataforma Nexuit o de nuestras prácticas de privacidad. Nos comprometemos a mantenerlo informado sobre los cambios que pueda sufrir este aviso a través de nuestra página de internet https://nexuit.app en la sección Privacidad.</p>
+    <p>Versión: 1.0</p>
+    <p>Última actualización: 16 de noviembre de 2026</p>
   </main>
+  <LandingFooter />
 </BaseLayout>
+
+<style>
+  .privacy-notice h2 {
+    margin-top: 2rem;
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  .privacy-notice p,
+  .privacy-notice ul,
+  .privacy-notice ol {
+    margin-top: 0.75rem;
+    color: var(--muted);
+    line-height: 1.75;
+  }
+
+  .privacy-notice ul,
+  .privacy-notice ol {
+    padding-left: 1.5rem;
+  }
+
+  .privacy-notice ul { list-style-type: disc; }
+  .privacy-notice ol { list-style-type: decimal; }
+  .privacy-notice li + li { margin-top: 0.375rem; }
+</style>

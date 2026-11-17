@@ -17,7 +17,7 @@ const {
 
 const SITE_URL = 'https://nexuit.app';
 const canonicalUrl = new URL(path, SITE_URL).toString();
-const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
+const socialImageUrl = new URL('/og.png', SITE_URL).toString();
 ---
 
 <html lang="es">
@@ -26,11 +26,12 @@ const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#071B3A" />
+    <meta name="theme-color" content="#F5F8F5" />
     <meta name="generator" content={Astro.generator} />
     <link rel="canonical" href={canonicalUrl} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Nexuit" />
@@ -38,7 +39,9 @@ const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={socialImageUrl} />
-    <meta property="og:image:alt" content="Vista previa de la landing de Nexuit" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Nexuit — Acceso anticipado. Inventario para quienes venden y fabrican." />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
@@ -51,15 +54,9 @@ const socialImageUrl = new URL('/og-image.svg', SITE_URL).toString();
       <meta name="robots" content="index,follow" />
     )}
 
-    <!-- Cloudflare Web Analytics (placeholder) -->
-    <script
-      defer
-      src="https://static.cloudflareinsights.com/beacon.min.js"
-      data-cf-beacon='{"token":"CF_TOKEN_AQUI"}'
-    ></script>
   </head>
 
-  <body class="site-shell grain-overlay">
+  <body class="site-shell">
     <slot />
   </body>
 </html>

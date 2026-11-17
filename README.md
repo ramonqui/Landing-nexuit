@@ -33,3 +33,9 @@ Pasos:
 3. Conecta GitHub y selecciona el repo `ramonqui/Landing-nexuit`.
 4. Confirma la configuración anterior y crea el proyecto.
 5. Cada push a `main` disparará un nuevo despliegue automáticamente.
+
+## Acceso anticipado
+
+- `PUBLIC_EARLY_ACCESS_ENDPOINT` habilita el envío. En una publicación autorizada usar `https://api.nexuit.app/public/early-access`. Sin esta variable el formulario muestra que aún no está disponible. Para probar en local usar un endpoint local o simulado.
+- `PUBLIC_EARLY_ACCESS_PRIVACY_URL` usa `https://nexuit.app/privacidad` para producción. En local usa `/privacidad` de forma predeterminada.
+- `PUBLIC_EARLY_ACCESS_PRIVACY_VERSION=1.0` debe coincidir exactamente con `EARLY_ACCESS_PRIVACY_VERSION=1.0` del API. La landing usa `1.0` de forma predeterminada.

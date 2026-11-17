@@ -1,4 +1,5 @@
 ---
+import EarlyAccessForm from '../components/landing/EarlyAccessForm.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FaqSection from '../components/landing/FaqSection.astro';
 import HeroSection from '../components/landing/HeroSection.astro';
@@ -6,21 +7,12 @@ import LandingFooter from '../components/landing/LandingFooter.astro';
 import LandingHeader from '../components/landing/LandingHeader.astro';
 import ValueSections from '../components/landing/ValueSections.astro';
 
-const PRIMARY_CTA_LABEL = 'Probar 7 días gratis';
-const TRIAL_CTA_HREF = 'https://app.nexuit.app/register';
-const loginUrl = 'https://app.nexuit.app/login';
-const ctaMicrocopy = 'Plan completo incluido · Sin tarjeta · Luego eliges tu plan';
-
-const navItems = [
-  { label: 'Producto', href: '#producto' },
-  { label: 'Operación', href: '#operacion' },
-  { label: 'Planes', href: '#planes' },
-  { label: 'Para quién', href: '#para-quien' },
-  { label: 'FAQ', href: '#faq' },
-];
+const PRIMARY_CTA_LABEL = 'Solicitar acceso anticipado';
+const PRIMARY_CTA_HREF = '#acceso-anticipado';
+const ctaMicrocopy = 'Déjanos tus datos y te avisaremos cuando abramos el acceso.';
 
 const heroChips = [
-  'Stock por sucursal',
+  'Inventario por sucursal',
   'Ventas conectadas',
   'Empaque validado',
   'Conciliación de inventario',
@@ -54,11 +46,11 @@ const operationSteps = [
 ] as const;
 
 const reconciliationRows = [
-  { product: 'Auriculares Bluetooth', system: '120', physical: '116', diff: '-4', status: 'Revisar', tone: 'danger' },
-  { product: 'Mouse Inalámbrico', system: '80', physical: '80', diff: '0', status: 'Cuadrado', tone: 'success' },
-  { product: 'Teclado Mecánico', system: '45', physical: '47', diff: '+2', status: 'Sobrante', tone: 'info' },
-  { product: 'Monitor 24”', system: '30', physical: '28', diff: '-2', status: 'Revisar', tone: 'danger' },
-  { product: 'Webcam HD', system: '15', physical: '15', diff: '0', status: 'Cuadrado', tone: 'success' },
+  { product: 'Café molido 500 g', system: '120', physical: '116', diff: '-4', status: 'Revisar', tone: 'danger' },
+  { product: 'Jabón neutro', system: '80', physical: '80', diff: '0', status: 'Cuadrado', tone: 'success' },
+  { product: 'Banco de madera', system: '45', physical: '47', diff: '+2', status: 'Sobrante', tone: 'info' },
+  { product: 'Playera estampada', system: '30', physical: '28', diff: '-2', status: 'Revisar', tone: 'danger' },
+  { product: 'Mochila urbana', system: '15', physical: '15', diff: '0', status: 'Cuadrado', tone: 'success' },
 ] as const;
 
 const reconciliationBenefits = [
@@ -82,135 +74,40 @@ const deviceBullets = [
 ] as const;
 
 const packingItems = [
-  { item: 'Playera Negra M', status: 'validado' },
-  { item: 'Gorra Azul', status: 'validado' },
-  { item: 'Tenis Blanco', status: 'validado' },
-  { item: 'Tenis Blanco 27', status: 'pendiente' },
-] as const;
-
-const plans = [
-  {
-    name: 'Base',
-    desc: 'Para negocios que quieren ordenar productos y stock.',
-    price: 'Desde $199 MXN/mes',
-    icon: 'catalog',
-    features: [
-      'Catálogo',
-      'Inventario',
-      'Stock por sucursal',
-      'Movimientos básicos',
-      'Acceso desde móvil',
-    ],
-  },
-  {
-    name: 'Operativo',
-    desc: 'Para negocios que venden y preparan pedidos.',
-    price: 'Desde $399 MXN/mes',
-    icon: 'movement',
-    features: [
-      'Todo lo de Base',
-      'Ventas y salidas',
-      'Organización de pedidos',
-      'Empaque validado',
-      'Historial de movimientos',
-    ],
-  },
-  {
-    name: 'Multicanal',
-    desc: 'Para negocios con varias sucursales o canales.',
-    price: 'Desde $699 MXN/mes',
-    icon: 'store',
-    features: [
-      'Todo lo de Operativo',
-      'Múltiples ubicaciones',
-      'Canales de venta',
-      'Despachos',
-      'Reportes operativos',
-    ],
-  },
-  {
-    name: 'Completo',
-    badge: 'Incluido en tu prueba gratis',
-    desc: 'Para operaciones que necesitan máximo control y trazabilidad.',
-    price: 'Desde $1,199 MXN/mes',
-    icon: 'shield',
-    highlighted: true,
-    features: [
-      'Todo lo de Multicanal',
-      'Conciliación avanzada',
-      'Conteos físicos',
-      'Ajustes controlados',
-      'Alertas de diferencias',
-      'Auditoría operativa',
-    ],
-  },
+  { item: 'Café molido 500 g', status: 'validado' },
+  { item: 'Playera estampada M', status: 'validado' },
+  { item: 'Mochila urbana', status: 'validado' },
+  { item: 'Repisa de pino', status: 'pendiente' },
 ] as const;
 
 const audienceCards = [
-  {
-    title: 'Tiendas y retail',
-    desc: 'Control de stock, ventas y reposiciones.',
-    icon: 'store',
-  },
-  {
-    title: 'Marcas multicanal',
-    desc: 'Vende en varios canales sin perder visibilidad.',
-    icon: 'layers',
-  },
-  {
-    title: 'Almacenes y distribución',
-    desc: 'Ubicaciones, traslados y despachos.',
-    icon: 'truck',
-  },
-  {
-    title: 'Empaque y fulfillment',
-    desc: 'Valida pedidos antes de entregar.',
-    icon: 'box',
-  },
+  { title: 'Tiendas y comercios', desc: 'Lleva el stock de productos de uso diario y encuentra diferencias entre sucursales.', icon: 'store' },
+  { title: 'Marcas con inventario', desc: 'Organiza tus variantes por talla, color o modelo y consulta existencias antes de vender.', icon: 'layers' },
+  { title: 'Distribuidores', desc: 'Consulta qué hay en cada almacén y prepara los pedidos pendientes de entrega.', icon: 'truck' },
+  { title: 'Talleres y fabricantes', desc: 'Controla materiales y productos terminados, desde playeras estampadas hasta muebles.', icon: 'box' },
 ] as const;
 
 const faqs = [
-  {
-    q: '¿Qué plan incluye la prueba gratis?',
-    a: 'La prueba gratuita incluye el plan Completo de Nexuit durante 7 días.',
-  },
-  {
-    q: '¿Necesito tarjeta para empezar?',
-    a: 'No. Puedes probar el plan Completo por 7 días sin ingresar tarjeta.',
-  },
-  {
-    q: '¿Qué pasa cuando termina la prueba?',
-    a: 'Puedes elegir uno de los 4 planes disponibles según las capacidades que necesite tu operación.',
-  },
-  {
-    q: '¿Puedo cambiar de plan después?',
-    a: 'Sí. Puedes iniciar con un plan y escalar cuando necesites más módulos, sucursales, conciliación o capacidades avanzadas.',
-  },
-  {
-    q: '¿Pierdo mi información si cambio de plan?',
-    a: 'No. Tu información operativa se conserva; el plan define las capacidades disponibles.',
-  },
+  { q: '¿Qué pasa cuando solicito acceso anticipado?', a: 'Tu solicitud queda en la lista. Te contactaremos para informarte cuándo puedes acceder a Nexuit.' },
+  { q: '¿Necesito proporcionar mi WhatsApp?', a: 'Es opcional. Puedes dejar tu correo como medio de contacto.' },
+  { q: '¿Para qué tipo de negocio es Nexuit?', a: 'Nexuit está pensado para tiendas, comercios, marcas, distribuidores, talleres y fabricantes que manejan inventario.' },
 ];
 ---
 
 <BaseLayout
-  title="Nexuit | Inventario, ventas, empaque y conciliación"
-  description="Controla stock, ventas, organización, empaque y conciliación de inventario desde una sola base. Prueba el plan Completo de Nexuit por 7 días, sin tarjeta."
+  title="Nexuit | Inventario, ventas y fabricación · Acceso anticipado"
+  description="Solicita acceso anticipado a Nexuit. Controla inventario, ventas y fabricación desde una sola base, ya sea que vendas productos o los fabriques."
   path="/"
 >
-  <LandingHeader
-    navItems={navItems}
-    primaryCtaHref={TRIAL_CTA_HREF}
-    primaryCtaLabel={PRIMARY_CTA_LABEL}
-    loginUrl={loginUrl}
-  />
+  <LandingHeader />
   <main>
     <HeroSection
       chips={heroChips}
-      primaryCtaHref={TRIAL_CTA_HREF}
+      primaryCtaHref={PRIMARY_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
     />
+    <EarlyAccessForm />
     <ValueSections
       problemCards={problemCards}
       operationSteps={operationSteps}
@@ -218,18 +115,14 @@ const faqs = [
       reconciliationBenefits={reconciliationBenefits}
       deviceBullets={deviceBullets}
       packingItems={packingItems}
-      plans={plans}
       audienceCards={audienceCards}
-      primaryCtaHref={TRIAL_CTA_HREF}
-      primaryCtaLabel={PRIMARY_CTA_LABEL}
-      ctaMicrocopy={ctaMicrocopy}
     />
     <FaqSection
       faqs={faqs}
-      primaryCtaHref={TRIAL_CTA_HREF}
+      primaryCtaHref={PRIMARY_CTA_HREF}
       primaryCtaLabel={PRIMARY_CTA_LABEL}
       ctaMicrocopy={ctaMicrocopy}
     />
   </main>
-  <LandingFooter navItems={navItems} />
+  <LandingFooter />
 </BaseLayout>
